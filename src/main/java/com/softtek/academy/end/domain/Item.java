@@ -1,5 +1,7 @@
 package com.softtek.academy.end.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,8 +9,13 @@ import javax.persistence.Table;
 
 @Table(name="item")
 @Entity
-public class Item {
+public class Item implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name="item_id")
 	private int id;

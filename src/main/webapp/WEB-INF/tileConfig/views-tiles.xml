@@ -43,5 +43,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/pages/template/jsp/User/edit.jsp" />
 	</definition>
+	
+	<definition name="viewCartLines" extends="DefaultTemplate">
+		<put-attribute name="title" value="Cart Details" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/template/jsp/Cart/view.jsp" />
+	</definition>
 
 </tiles-definitions>

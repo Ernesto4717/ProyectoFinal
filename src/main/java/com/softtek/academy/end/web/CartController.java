@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.softtek.academy.end.domain.Cart;
 import com.softtek.academy.end.domain.ShipTo;
 import com.softtek.academy.end.domain.Status;
+import com.softtek.academy.end.services.CartLineService;
 import com.softtek.academy.end.services.CartService;
 import com.softtek.academy.end.services.ShipToService;
 import com.softtek.academy.end.services.StatusService;
@@ -37,6 +38,9 @@ public class CartController {
 
 	@Autowired
 	ShipToService shipToService;
+	
+	@Autowired 
+	CartLineService cartLineService;
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String root() {
@@ -74,5 +78,11 @@ public class CartController {
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateCart(HttpServletRequest request) {
 		return null;
+	}
+	
+	@RequestMapping(value="/view")
+	public String viewCartLines(@RequestParam Long cartId,Model model){
+		model.addAttribute("",cartLineService.listByCartId(cartId) );
+		return "viewCartLines";
 	}
 }

@@ -3,6 +3,7 @@ package com.softtek.academy.end.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.ColumnResult;
 import javax.persistence.ConstructorResult;
 import javax.persistence.Embedded;
@@ -13,6 +14,8 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 @Entity
 @Table(name = "cart")
@@ -150,11 +153,5 @@ public class Cart implements Serializable{
 	public void setAudit(Audit audit) {
 		this.audit = audit;
 	}
-	
-	
-	
-	
-	 	
 
-	
 }
