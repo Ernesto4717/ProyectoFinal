@@ -1,13 +1,11 @@
 package com.softtek.academy.end.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.softtek.academy.end.domain.User;
-import com.softtek.academy.end.domain.UserRole;
 import com.softtek.academy.end.repository.UserRepository;
 
 @Service
@@ -19,7 +17,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> userList() {
 		// TODO Auto-generated method stub
-		return userRepository.userList();
+		return userRepository.findAll();
 	}
 
 	@Override
@@ -34,10 +32,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean update(User user, String user_role_id) {
+	public boolean update(User user) {
 		// TODO Auto-generated method stub
-
-		user.setRole(new UserRole(user_role_id, ""));
 		if (isValidUser(user)) {
 			userRepository.save(user);
 			return true;
@@ -59,10 +55,6 @@ public class UserServiceImpl implements UserService {
 
 		if (user.getUsername() == null) {
 
-			return false;
-		}
-		if (user.getRole() == null || user.getRole().getUser_roleid().isEmpty()) {
-			System.out.println(4);
 			return false;
 		}
 		System.out.println(user.getPassword());

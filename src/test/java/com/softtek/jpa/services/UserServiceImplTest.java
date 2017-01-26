@@ -13,7 +13,7 @@ import com.softtek.academy.end.services.UserService;
 public class UserServiceImplTest {
 	
 	@InjectMocks
-	private User user=new User("Ernesto", "mmurillo", "Ernesto", "1", "1300", "nada");
+	private User user=new User("Ernesto", "mmurillo", "Ernesto", "1300", "nada");
 	
 	@Mock
 	private UserService userService;

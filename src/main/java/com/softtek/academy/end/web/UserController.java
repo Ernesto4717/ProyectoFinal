@@ -23,8 +23,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.softtek.academy.end.domain.User;
-import com.softtek.academy.end.domain.UserRole;
-import com.softtek.academy.end.services.UserRolService;
 import com.softtek.academy.end.services.UserService;
 
 /**
@@ -34,17 +32,10 @@ import com.softtek.academy.end.services.UserService;
 @Controller
 public class UserController {
 
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired
 	UserService userService;
-
-	@Autowired
-	UserRolService userRoleService;
-
-	/*
-	 * @Autowired UserRolService userRoleImpl;
-	 */
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String root() {
@@ -78,12 +69,8 @@ public class UserController {
 	@RequestMapping(value = "/edit")
 	public String editUser(@RequestParam String username, @RequestParam String status, Model model) {
 		User user = userService.user(username);
-		List<UserRole> userRoleList = userRoleService.userRoleList();
-		List<String> listStatus = userRoleService.statusList();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("users", user);
-		map.put("userRole", userRoleList);
-		map.put("listStatus", listStatus);
 		map.put("status", status);
 		model.addAttribute("map", map);
 		return "editUser";
@@ -106,8 +93,7 @@ public class UserController {
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateUser(@ModelAttribute User user, HttpServletRequest request) {
 
-		final String user_role_id = new String(request.getParameter("userRole"));
-		if (userService.update(user, user_role_id)) {
+		if (userService.update(user)) {
 			return "redirect:/User/List";
 		}
 		return "redirect:/User/edit?username=" + user.getUsername() + "&status=Not valid";
@@ -125,6 +111,7 @@ public class UserController {
 		 * userRole.setDescription(description); user.setRole(userRole); if(
 		 * userService.update(user)){ return "redirect:/User/List"; } return
 		 * "redirect:/User/create?status=Not Valid";
-		 */return null;
+		 */
+		return null;
 	}
 }

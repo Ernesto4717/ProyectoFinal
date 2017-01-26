@@ -17,7 +17,7 @@ public class CartServiceImpl implements CartService{
 	@Override
 	public List<Cart> cartList() {
 		// TODO Auto-generated method stub
-		return cartRepository.cartList();
+		return cartRepository.findAll();
 	}
 
 	@Override

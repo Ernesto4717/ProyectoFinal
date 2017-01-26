@@ -18,22 +18,6 @@ import javax.persistence.Table;
 @Table(name = "cart")
 @NamedNativeQueries({
 	@NamedNativeQuery(
-			name="findCarts",
-			query="SELECT c.cart_id as cart_key, "
-					+ "c.lines_amount as linesAmount, "
-					+ "c.shipping_amount as shippingAmount, "
-					+ "c.cart_amount as cartAmount, "
-					+ "st.name as ship_to, "
-					+ "c.ship_to_id as shipToId, "
-					+ "s.description as status, "
-					+ "c.status_id as statusId, " 
-					+ "c.create_date as createdate, "
-					+ "c.update_date as updatedate "
-					+" FROM cart c "
-			+ " JOIN ship_to st ON st.ship_to_id = c.ship_to_id "
-			+ " JOIN status s ON s.status_id = c.status_id ",
-			resultSetMapping = "CartsMapping"),
-	@NamedNativeQuery(
 			name="findOneCart",
 			query="SELECT c.cart_id as cart_key, "
 					+ "c.lines_amount as linesAmount, "

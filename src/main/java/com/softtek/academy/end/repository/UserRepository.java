@@ -12,9 +12,6 @@ import com.softtek.academy.end.domain.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 	
-	@Query(name = "findUsers", nativeQuery = true)
-	public List<User> userList();
-	
 	@Query(name = "findOneUser", nativeQuery = true)
 	public User user(@Param ("username") String username);
 	

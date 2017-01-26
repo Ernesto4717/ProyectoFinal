@@ -27,11 +27,7 @@ import com.softtek.academy.end.services.StatusService;
 @RequestMapping(value = "/Cart")
 @Controller
 public class CartController {
-	private static final Logger logger = LoggerFactory.getLogger(CartController.class);
-
-	/*
-	 * @Autowired CartService cartSerciveImpl;
-	 */
+	static final Logger logger = LoggerFactory.getLogger(CartController.class);
 
 	@Autowired
 	CartService cartService;

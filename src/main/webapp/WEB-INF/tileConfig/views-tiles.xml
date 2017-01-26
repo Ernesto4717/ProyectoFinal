@@ -5,7 +5,7 @@
 <tiles-definitions>
 	<definition name="home" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/pages/template/body.jsp" />
-		
+
 	</definition>
 
 	<definition name="carts" extends="DefaultTemplate">
@@ -13,7 +13,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/pages/template/jsp/Cart/List.jsp" />
 		<put-list-attribute name="javascript" inherit="true">
-			<add-attribute value="/js/angular/cartService.js"/>
+			<add-attribute value="/js/angular/cartService.js" />
 		</put-list-attribute>
 	</definition>
 
@@ -22,8 +22,14 @@
 		<put-attribute name="body"
 			value="/WEB-INF/pages/template/jsp/User/List.jsp" />
 		<put-list-attribute name="javascript" inherit="true">
-			<add-attribute value="/js/angular/userService.js"/>
+			<add-attribute value="/js/angular/userService.js" />
 		</put-list-attribute>
+	</definition>
+
+	<definition name="items" extends="DefaultTemplate">
+		<put-attribute name="title" value="Items" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/template/jsp/Item/List.jsp" />
 	</definition>
 
 	<definition name="EditCart" extends="DefaultTemplate">
@@ -37,5 +43,5 @@
 		<put-attribute name="body"
 			value="/WEB-INF/pages/template/jsp/User/edit.jsp" />
 	</definition>
-	
+
 </tiles-definitions>
