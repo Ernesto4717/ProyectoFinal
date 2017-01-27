@@ -22,3 +22,21 @@ CREATE TABLE cart (
   update_user varchar(20) ,
   update_date varchar(30) 
 );
+
+CREATE TABLE cart_line (
+  cart_line_id int(11) NOT NULL ,
+  cart_id int(11) NOT NULL,
+  item_id int(11) NOT NULL,
+  quantity int(11)
+);
+
+CREATE TABLE item (
+  item_id int(11) NOT NULL,
+  description varchar(100) ,
+  features varchar(250) ,
+  uom_id varchar(5) NOT NULL,
+  unit_price decimal(10,2) ,
+  image_path varchar(250) ,
+  stock int(11) ,
+  active varchar(1) 
+);

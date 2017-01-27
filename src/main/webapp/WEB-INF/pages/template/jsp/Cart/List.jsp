@@ -22,14 +22,14 @@
 					<th width="7%">Status</th>
 					<th width="15%">Created Date</th>
 					<th width="15%">Modified Date</th>
-					<th width="11%">Delete</th>
+					<th width="11%">Details</th>
 				</tr>
 
 			</thead>
 			<tbody>
 
 				<tr data-ng-repeat="cart in cartList">
-					<td><a data-ng-href="/Cart/edit?cartId={{cart.id.id}}&status=">{{cart.id.id}}</a></td>
+					<td><a data-ng-href="edit?cartId={{cart.id}}&status=">{{cart.id}}</a></td>
 
 					<td data-ng-bind="cart.cartDetails.linesAmount | currency"></td>
 					<td data-ng-bind="cart.cartDetails.shippingAmount"></td>
@@ -38,7 +38,7 @@
 					<td data-ng-bind="cart.cartDetails.status.description"></td>
 					<td data-ng-bind="cart.audit.createDate  | date:'medium'"></td>
 					<td data-ng-bind="cart.audit.updateDate | date:'medium'"></td>
-					<td data-ng-show="cart.cartDetails.status.id != 1300">Delete</td>
+					<td><a data-ng-href="view?cartId={{cart.id}}">view</a></td>
 				</tr>
 
 			</tbody>

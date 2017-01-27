@@ -7,92 +7,71 @@ import javax.persistence.Column;
 import javax.persistence.ColumnResult;
 import javax.persistence.ConstructorResult;
 import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-
 @Entity
 @Table(name = "cart")
-@NamedNativeQueries({
-	@NamedNativeQuery(
-			name="findOneCart",
-			query="SELECT c.cart_id as cart_key, "
-					+ "c.lines_amount as linesAmount, "
-					+ "c.shipping_amount as shippingAmount, "
-					+ "c.cart_amount as cartAmount, "
-					+ "st.name as ship_to, "
-					+ "c.ship_to_id as shipToId, "
-					+ "s.description as status, "
-					+ "c.status_id as statusId,"
-					+ "c.create_date as createdate, "
-					+ "c.update_date as updatedate "
-					
-					+" FROM cart c "
-			+ " JOIN ship_to st ON st.ship_to_id = c.ship_to_id "
-			+ " JOIN status s ON s.status_id = c.status_id "
-			+ "WHERE c.cart_id = :cartId ",
-			resultSetMapping = "CartsMapping")
-	})
-@SqlResultSetMappings({
-	@SqlResultSetMapping(name="CartsMapping",
-			classes= {
-					@ConstructorResult(
-							targetClass = Cart.class,
-							columns = {
-								@ColumnResult(name = "cart_key", type = Long.class),
-								@ColumnResult(name = "linesAmount", type = Double.class),
-								@ColumnResult(name = "shippingAmount", type = Double.class),
-								@ColumnResult(name = "cartAmount", type = Double.class),
-								@ColumnResult(name = "ship_to", type= String.class),
-								@ColumnResult(name = "shipToId", type= Long.class),
-								@ColumnResult(name = "status", type = String.class),
-								@ColumnResult(name = "statusId", type= Long.class),
-								@ColumnResult(name = "createdate", type= Date.class),
-								@ColumnResult(name = "updatedate", type= Date.class)
-							})
-			})
-})
+@NamedNativeQueries({ @NamedNativeQuery(name = "findOneCart", query = "SELECT c.cart_id as cart_key, "
+		+ "c.lines_amount as linesAmount, " + "c.shipping_amount as shippingAmount, " + "c.cart_amount as cartAmount, "
+		+ "st.name as ship_to, " + "c.ship_to_id as shipToId, " + "s.description as status, "
+		+ "c.status_id as statusId," + "c.create_date as createdate, " + "c.update_date as updatedate "
+		+ " FROM cart c " + " JOIN ship_to st ON st.ship_to_id = c.ship_to_id "
+		+ " JOIN status s ON s.status_id = c.status_id "
+		+ "WHERE c.cart_id = :cartId ", resultSetMapping = "CartsMapping") })
+@SqlResultSetMappings({ @SqlResultSetMapping(name = "CartsMapping", classes = {
+		@ConstructorResult(targetClass = Cart.class, columns = { @ColumnResult(name = "cart_key", type = Long.class),
+				@ColumnResult(name = "linesAmount", type = Double.class),
+				@ColumnResult(name = "shippingAmount", type = Double.class),
+				@ColumnResult(name = "cartAmount", type = Double.class),
+				@ColumnResult(name = "ship_to", type = String.class),
+				@ColumnResult(name = "shipToId", type = Long.class),
+				@ColumnResult(name = "status", type = String.class),
+				@ColumnResult(name = "statusId", type = Long.class),
+				@ColumnResult(name = "createdate", type = Date.class),
+				@ColumnResult(name = "updatedate", type = Date.class) }) }) })
 
-public class Cart implements Serializable{
-		
+public class Cart implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
-	@EmbeddedId
-	private CartKey id;
+
+	@Id
+	@Column(name = "cart_id", unique=true , nullable = false)
+	private Long id;
 
 	@Embedded
 	private CartDetails cartDetails;
 
 	@Embedded
 	private Audit audit;
-	
+
 	public Cart() {
 		super();
 	}
 
-	
-	
-	public Cart(final Long cart_key,final Double linesAmount,final Double shippingAmount,final Double cartAmount,
-			final String ship_to, final Long shipToId,final String status,final Long statusId,final Date date,final Date update) {
+	public Cart(final Long cart_key, final Double linesAmount, final Double shippingAmount, final Double cartAmount,
+			final String ship_to, final Long shipToId, final String status, final Long statusId, final Date date,
+			final Date update) {
 		super();
-		this.id=new CartKey(cart_key);
-		this.cartDetails=new CartDetails(linesAmount, shippingAmount, cartAmount, shipToId,ship_to, statusId,status);
-		this.audit=new Audit(date, update);
+		this.id = cart_key;
+		this.cartDetails = new CartDetails(linesAmount, shippingAmount, cartAmount, shipToId, ship_to, statusId,
+				status);
+		this.audit = new Audit(date, update);
 	}
-	public Cart(final Long cart_key,final Double linesAmount,final Double shippingAmount,final Double cartAmount,
-			final Long ship_to_id,final Long status_id) {
+
+	public Cart(final Long cart_key, final Double linesAmount, final Double shippingAmount, final Double cartAmount,
+			final Long ship_to_id, final Long status_id) {
 		super();
-		this.id=new CartKey(cart_key);
-		this.cartDetails=new CartDetails(linesAmount, shippingAmount, cartAmount, ship_to_id,"", status_id,"");
+		this.id = cart_key;
+		this.cartDetails = new CartDetails(linesAmount, shippingAmount, cartAmount, ship_to_id, "", status_id, "");
 
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -130,11 +109,11 @@ public class Cart implements Serializable{
 		return true;
 	}
 
-	public CartKey getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(CartKey id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -19,4 +19,10 @@ public class ItemServiceImpl implements ItemService {
 		return itemRepo.findAll();
 	}
 
+	@Override
+	public Item item(int id) {
+		// TODO Auto-generated method stub
+		return itemRepo.findItemById(id);
+	}
+
 }

@@ -16,69 +16,64 @@ import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cart_line")
-@NamedNativeQueries({
-	@NamedNativeQuery(name="findCartLinesByCartId",
-			query="SELECT c.cart_line_id as cartLine,"
-					+ " c.cart_id as cartId, "
-					+ " c.item_id as itemId, "
-					+ " c.quantity as quantity"
-					+ " From cart_line c"
-					+ " Where c.cart_id = :cartId",
-					resultSetMapping="CartLineMapping")
-})
-@SqlResultSetMappings({
-	@SqlResultSetMapping(name="CartLineMapping",
-	classes= {
-			@ConstructorResult(
-					targetClass= CartLine.class,
-					columns={
-							@ColumnResult(name="cartLine", type=Integer.class),
-							@ColumnResult(name="cartId", type=Integer.class),
-							@ColumnResult(name="itemId", type=Integer.class),
-							@ColumnResult(name="quantity", type=Integer.class)
-					})
-	})
-})
+@Table(name = "cart_line")
+@NamedNativeQueries({ @NamedNativeQuery(name = "findCartLinesByCartId",
+		query = "SELECT c.cart_line_id as cartLine,"
+		+ " ca.cart_id as cartId, " 
+			+ " i.item_id as itemId, " 
+			+ " c.quantity as quantity "
+			+ "ca." 
+			+ " From cart_line c "
+		+ "JOIN cart ca ON ca.cart_id = c.cart_id "
+		+ "JOIN item i ON i.item_id = c.item_id "
+		+ " Where c.cart_id = :cartId", resultSetMapping = "CartLineMapping") })
+@SqlResultSetMappings({ @SqlResultSetMapping(name = "CartLineMapping", classes = {
+		@ConstructorResult(targetClass = CartLine.class, columns = {
+				@ColumnResult(name = "cartLine", type = Long.class),
+				@ColumnResult(name = "cartId", type = Long.class),
+				@ColumnResult(name = "itemId", type = int.class),
+				@ColumnResult(name = "quantity", type = int.class) 
+				}) }) })
 public class CartLine implements Serializable {
-	
+
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@Column(name="cart_line_id")
-	private int id;
-	
+	@Column(name = "cart_line_id", unique=true , nullable = false)
+	private Long id;
+
 	@ManyToOne
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
-	
+
 	@ManyToOne
-	@JoinColumn(name="item_id")
+	@JoinColumn(name = "item_id")
 	private Item item;
-	
-	@Column(name="quantity")
+
+	@Column(name = "quantity")
 	private int quantity;
 
 	public CartLine() {
 		super();
 	}
 
-	public CartLine(int id, Cart cart, Item item, int quantity) {
+	public CartLine(Long id, Long cartId, int itemId, int quantity) {
 		super();
 		this.id = id;
-		this.cart = cart;
-		this.item = item;
+		this.cart = new Cart();
+		this.item = new Item();
 		this.quantity = quantity;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -108,21 +103,46 @@ public class CartLine implements Serializable {
 
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cart == null) ? 0 : cart.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((item == null) ? 0 : item.hashCode());
+		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CartLine other = (CartLine) obj;
+		if (cart == null) {
+			if (other.cart != null)
+				return false;
+		} else if (!cart.equals(other.cart))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (item == null) {
+			if (other.item != null)
+				return false;
+		} else if (!item.equals(other.item))
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return "CartLine [id=" + id + ", cart=" + cart + ", item=" + item + ", quantity=" + quantity + "]";
 	}
-	
-	
+
+
+
 }

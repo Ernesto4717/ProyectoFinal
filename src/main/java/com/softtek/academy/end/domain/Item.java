@@ -3,12 +3,42 @@ package com.softtek.academy.end.domain;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
 
-@Table(name="item")
 @Entity
+@Table(name="item")
+@NamedNativeQueries({	
+	@NamedNativeQuery(
+			name="findOneItem",
+				query="SELECT i.item_id as id,"
+						+ " i.description as description,"
+						+ " i.unit_price as price,"
+						+ " i.stock as stock"
+						+ " FROM item i "
+						+ " WHERE i.item_id = :itemId",
+				resultSetMapping = "ItemMapping")
+	})
+@SqlResultSetMappings({
+	@SqlResultSetMapping(name="ItemMapping",
+			classes= {
+					@ConstructorResult(
+							targetClass = Item.class,
+							columns = {
+								@ColumnResult(name = "username", type = Integer.class),
+								@ColumnResult(name = "password", type = String.class),
+								@ColumnResult(name = "name", type = Double.class),
+								@ColumnResult(name = "active", type = Integer.class)
+							})
+			})
+	})
 public class Item implements Serializable {
 	
 	/**
@@ -30,6 +60,10 @@ public class Item implements Serializable {
 	private int stock;
 	
 	public Item() {
+		super();
+	}
+	
+	public Item(int id) {
 		super();
 	}
 

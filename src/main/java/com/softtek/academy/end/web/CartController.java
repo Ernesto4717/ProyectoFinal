@@ -82,7 +82,7 @@ public class CartController {
 	
 	@RequestMapping(value="/view")
 	public String viewCartLines(@RequestParam Long cartId,Model model){
-		model.addAttribute("",cartLineService.listByCartId(cartId) );
+		model.addAttribute("cartLines",cartLineService.listByCartId(cartId) );
 		return "viewCartLines";
 	}
 }

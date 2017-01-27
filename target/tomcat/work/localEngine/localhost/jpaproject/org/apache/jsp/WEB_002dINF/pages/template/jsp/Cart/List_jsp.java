@@ -81,14 +81,14 @@ public final class List_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t<th width=\"7%\">Status</th>\r\n");
       out.write("\t\t\t\t\t<th width=\"15%\">Created Date</th>\r\n");
       out.write("\t\t\t\t\t<th width=\"15%\">Modified Date</th>\r\n");
-      out.write("\t\t\t\t\t<th width=\"11%\">Delete</th>\r\n");
+      out.write("\t\t\t\t\t<th width=\"11%\">Details</th>\r\n");
       out.write("\t\t\t\t</tr>\r\n");
       out.write("\r\n");
       out.write("\t\t\t</thead>\r\n");
       out.write("\t\t\t<tbody>\r\n");
       out.write("\r\n");
       out.write("\t\t\t\t<tr data-ng-repeat=\"cart in cartList\">\r\n");
-      out.write("\t\t\t\t\t<td><a data-ng-href=\"/Cart/edit?cartId={{cart.id.id}}&status=\">{{cart.id.id}}</a></td>\r\n");
+      out.write("\t\t\t\t\t<td><a data-ng-href=\"edit?cartId={{cart.id}}&status=\">{{cart.id}}</a></td>\r\n");
       out.write("\r\n");
       out.write("\t\t\t\t\t<td data-ng-bind=\"cart.cartDetails.linesAmount | currency\"></td>\r\n");
       out.write("\t\t\t\t\t<td data-ng-bind=\"cart.cartDetails.shippingAmount\"></td>\r\n");
@@ -97,7 +97,7 @@ public final class List_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t<td data-ng-bind=\"cart.cartDetails.status.description\"></td>\r\n");
       out.write("\t\t\t\t\t<td data-ng-bind=\"cart.audit.createDate  | date:'medium'\"></td>\r\n");
       out.write("\t\t\t\t\t<td data-ng-bind=\"cart.audit.updateDate | date:'medium'\"></td>\r\n");
-      out.write("\t\t\t\t\t<td data-ng-show=\"cart.cartDetails.status.id != 1300\">Delete</td>\r\n");
+      out.write("\t\t\t\t\t<td><a data-ng-href=\"view?cartId={{cart.id}}\">view</a></td>\r\n");
       out.write("\t\t\t\t</tr>\r\n");
       out.write("\r\n");
       out.write("\t\t\t</tbody>\r\n");
