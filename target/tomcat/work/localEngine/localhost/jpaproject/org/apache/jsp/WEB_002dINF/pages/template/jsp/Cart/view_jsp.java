@@ -80,7 +80,7 @@ public final class view_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t<thead class=\"thead-inverse\">\r\n");
       out.write("\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t<th width=\"25%\">CartLine Id</th>\r\n");
-      out.write("\t\t\t\t\t<th width=\"25%\">Ship To</th>\r\n");
+      out.write("\t\t\t\t\t<th width=\"25%\">User</th>\r\n");
       out.write("\t\t\t\t\t<th width=\"25%\">Item Description</th>\r\n");
       out.write("\t\t\t\t\t<th width=\"25%\">Quantity</th>\r\n");
       out.write("\t\t\t\t</tr>\r\n");
@@ -171,7 +171,7 @@ public final class view_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${cartLine.id}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</td>\r\n");
           out.write("\t\t\t\t<td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${cartLine.cart.cartDetails.shipTo.Name}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${cartLine.audit.createUser}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</td>\r\n");
           out.write("\t\t\t\t<td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${cartLine.item.description}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));

@@ -18,21 +18,23 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "cart_line")
 @NamedNativeQueries({ @NamedNativeQuery(name = "findCartLinesByCartId",
-		query = "SELECT c.cart_line_id as cartLine,"
-		+ " ca.cart_id as cartId, " 
-			+ " i.item_id as itemId, " 
-			+ " c.quantity as quantity "
-			+ "ca." 
-			+ " From cart_line c "
-		+ "JOIN cart ca ON ca.cart_id = c.cart_id "
-		+ "JOIN item i ON i.item_id = c.item_id "
-		+ " Where c.cart_id = :cartId", resultSetMapping = "CartLineMapping") })
+		query = "SELECT c.cart_line_id as cartLine, "
+				+ "ca.cart_id as cartId, "
+				+ "i.item_id as itemId, "
+				+ "c.quantity as quantity, "
+				+ "ca.create_user as createUser, "
+				+ "i.description as itemDesc, "
+				+ "i.unit_price as itemPrice "
+				+ "From cart_line c "
+				+ "JOIN cart ca ON ca.cart_id = c.cart_id "
+				+ "JOIN item i ON i.item_id = c.item_id "
+				+ "Where c.cart_id= :cartId", resultSetMapping = "CartLineMapping") })
 @SqlResultSetMappings({ @SqlResultSetMapping(name = "CartLineMapping", classes = {
 		@ConstructorResult(targetClass = CartLine.class, columns = {
 				@ColumnResult(name = "cartLine", type = Long.class),
-				@ColumnResult(name = "cartId", type = Long.class),
-				@ColumnResult(name = "itemId", type = int.class),
-				@ColumnResult(name = "quantity", type = int.class) 
+				@ColumnResult(name = "cartId", type = Cart.class),
+				@ColumnResult(name = "itemId", type = Item.class),
+				@ColumnResult(name = "quantity", type = int.class)
 				}) }) })
 public class CartLine implements Serializable {
 
@@ -61,10 +63,9 @@ public class CartLine implements Serializable {
 		super();
 	}
 
-	public CartLine(Long id, Long cartId, int itemId, int quantity) {
+	public CartLine(Long id, Cart cart, Item item, int quantity) {
 		super();
-		this.id = id;
-		this.cart = new Cart();
+		this.cart= new Cart();
 		this.item = new Item();
 		this.quantity = quantity;
 	}

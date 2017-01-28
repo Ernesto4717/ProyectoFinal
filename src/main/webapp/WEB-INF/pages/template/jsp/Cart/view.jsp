@@ -15,7 +15,7 @@
 			<thead class="thead-inverse">
 				<tr>
 					<th width="25%">CartLine Id</th>
-					<th width="25%">Ship To</th>
+					<th width="25%">User</th>
 					<th width="25%">Item Description</th>
 					<th width="25%">Quantity</th>
 				</tr>
@@ -26,7 +26,7 @@
 			${cartLine.item.price }
 			<tr>
 				<td>${cartLine.id}</td>
-				<td>${cartLine.cart.cartDetails.shipTo.Name}</td>
+				<td>${cartLine.audit.createUser}</td>
 				<td>${cartLine.item.description}</td>
 				<td>${cartLine.quantity}</td>
 			</tr>
