@@ -5,7 +5,7 @@
 <div data-ng-controller="cartController">
 	<ol class="breadcrumb">
 		<li><a href="<c:url value="/Cart/home"/>">Home</a></li>
-		<li class="active">User List</li>
+		<li class="active">Cart List</li>
 	</ol>
 
 

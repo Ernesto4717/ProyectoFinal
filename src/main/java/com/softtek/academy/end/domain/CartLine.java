@@ -1,6 +1,7 @@
 package com.softtek.academy.end.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.ColumnResult;
@@ -19,21 +20,32 @@ import javax.persistence.Table;
 @Table(name = "cart_line")
 @NamedNativeQueries({ @NamedNativeQuery(name = "findCartLinesByCartId",
 		query = "SELECT c.cart_line_id as cartLine, "
-				+ "ca.cart_id as cartId, "
-				+ "i.item_id as itemId, "
-				+ "c.quantity as quantity, "
-				+ "ca.create_user as createUser, "
-				+ "i.description as itemDesc, "
-				+ "i.unit_price as itemPrice "
-				+ "From cart_line c "
+				+ " ca.cart_id as cartId, "
+				+ " i.item_id as itemId, "
+				+ " c.quantity as quantity, "
+				+ " ca.create_user as createUser, "
+				+ " ca.lines_amount as linesAmount, "
+				+ " i.description as itemDesc, "
+				+ " i.stock as stock, "
+				+ " ca.create_date as date, "
+				+ " ca.update_date as updatexd, "
+				+ " i.unit_price as itemPrice "
+				+ " FROM cart_line c "
 				+ "JOIN cart ca ON ca.cart_id = c.cart_id "
 				+ "JOIN item i ON i.item_id = c.item_id "
 				+ "Where c.cart_id= :cartId", resultSetMapping = "CartLineMapping") })
 @SqlResultSetMappings({ @SqlResultSetMapping(name = "CartLineMapping", classes = {
 		@ConstructorResult(targetClass = CartLine.class, columns = {
 				@ColumnResult(name = "cartLine", type = Long.class),
-				@ColumnResult(name = "cartId", type = Cart.class),
-				@ColumnResult(name = "itemId", type = Item.class),
+				@ColumnResult(name = "cartId", type = Long.class),
+				@ColumnResult(name = "createUser", type = String.class),
+				@ColumnResult(name = "linesAmount", type = Double.class),
+				@ColumnResult(name = "itemId", type = int.class),
+				@ColumnResult(name = "itemDesc", type = String.class),
+				@ColumnResult(name = "itemPrice", type = Double.class),
+				@ColumnResult(name = "stock", type = int.class),
+				@ColumnResult(name = "date", type = Date.class),
+				@ColumnResult(name = "updatexd", type = Date.class),
 				@ColumnResult(name = "quantity", type = int.class)
 				}) }) })
 public class CartLine implements Serializable {
@@ -63,10 +75,12 @@ public class CartLine implements Serializable {
 		super();
 	}
 
-	public CartLine(Long id, Cart cart, Item item, int quantity) {
+	public CartLine(Long id, Long cartId,String createUser,Double linesAmount, int itemId,
+			String itemDesc, Double itemPrice, int stock ,Date date, Date update, int quantity) {
 		super();
-		this.cart= new Cart();
-		this.item = new Item();
+		this.id= id;
+		this.cart= new Cart(cartId, linesAmount, 0D, 0D,"", 1L,"", 1L,date,update);
+		this.item = new Item(itemId,itemDesc,itemPrice,stock);
 		this.quantity = quantity;
 	}
 

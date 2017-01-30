@@ -21,8 +21,7 @@ import javax.persistence.Table;
 				query="SELECT u.username as username, "
 						+ "u.password as password,"
 						+ "u.name as name, "
-						+ "u.active as active, " 
-						+ "ur.description as description "
+						+ "u.active as active " 
 						+ " FROM user u "
 				+ " WHERE u.username = :username",
 				resultSetMapping = "UserMapping"),
@@ -32,8 +31,7 @@ import javax.persistence.Table;
 				query="SELECT u.username as username, "
 						+ "u.password as password,"
 						+ "u.name as name, "
-						+ "u.active as active, " 
-						+ "ur.description as description "
+						+ "u.active as active " 
 						+ " FROM user u "
 				+ " WHERE u.username = :username",
 				resultSetMapping = "UserMapping"),
@@ -58,8 +56,7 @@ import javax.persistence.Table;
 								@ColumnResult(name = "username", type = String.class),
 								@ColumnResult(name = "password", type = String.class),
 								@ColumnResult(name = "name", type = String.class),
-								@ColumnResult(name = "active", type = String.class),
-								@ColumnResult(name = "description", type = String.class)
+								@ColumnResult(name = "active", type = String.class)
 							})
 			}),
 	@SqlResultSetMapping(name="UserMapping",
@@ -70,13 +67,11 @@ import javax.persistence.Table;
 						@ColumnResult(name = "username", type = String.class),
 						@ColumnResult(name = "password", type = String.class),
 						@ColumnResult(name = "name", type = String.class),
-						@ColumnResult(name = "active", type = String.class),
-						@ColumnResult(name = "description", type = String.class)
+						@ColumnResult(name = "active", type = String.class)
 					})
 	}),
 	@SqlResultSetMapping(name="updateResult", columns = { @ColumnResult(name = "count")})
 })
-
 
 public class User implements Serializable{
 	
@@ -99,16 +94,13 @@ public class User implements Serializable{
 		super();
 	}
 
-
-	public User(final String username, final String password, final String name, final String status,final String description) {
+	public User(final String username, final String password, final String name, final String status) {
 		super();
 		this.username = username;
 		this.name = name;
 		this.status = status;
-		this.password = password;
-	
+		this.password = password;	
 	}
-
 
 	public String getUsername() {
 		return username;
@@ -144,8 +136,5 @@ public class User implements Serializable{
 	public String toString() {
 		return "User [userName=" + username + ", name=" + name + ", status=" + status + "]";
 	}
-	
-
-	
 	
 }

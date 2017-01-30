@@ -64,7 +64,7 @@ public final class List_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
       out.write("\">Home</a></li>\r\n");
-      out.write("\t\t<li class=\"active\">User List</li>\r\n");
+      out.write("\t\t<li class=\"active\">Cart List</li>\r\n");
       out.write("\t</ol>\r\n");
       out.write("\r\n");
       out.write("\r\n");

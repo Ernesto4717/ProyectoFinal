@@ -10,12 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,9 +51,9 @@ public class UserController {
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/Lists/{user}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@RequestMapping(value = "/Lists")
 	@ResponseBody
-	public ResponseEntity<?> searchUser(@PathVariable(value = "user") final String user) {
+	public ResponseEntity<?> searchUser(@RequestParam final String user) {
 		System.out.println(user);
 		List<User> users = userService.searchUser(user);
 		System.out.println(users);
@@ -67,11 +65,10 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/edit")
-	public String editUser(@RequestParam String username, @RequestParam String status, Model model) {
+	public String editUser(@RequestParam String username, Model model) {
 		User user = userService.user(username);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("users", user);
-		map.put("status", status);
 		model.addAttribute("map", map);
 		return "editUser";
 

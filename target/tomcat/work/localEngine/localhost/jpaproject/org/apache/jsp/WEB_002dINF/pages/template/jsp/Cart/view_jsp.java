@@ -61,6 +61,7 @@ public final class view_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("<ol class=\"breadcrumb\">\r\n");
       out.write("\t<li><a href=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -70,7 +71,7 @@ public final class view_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
       out.write("\">List</a></li>\r\n");
-      out.write("\t<li class=\"active\">Bootstrap 3</li>\r\n");
+      out.write("\t<li class=\"active\">Cart lines</li>\r\n");
       out.write("</ol>\r\n");
       out.write("\r\n");
       out.write("<div>\r\n");
@@ -79,10 +80,12 @@ public final class view_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<table class=\"table\">\r\n");
       out.write("\t\t\t<thead class=\"thead-inverse\">\r\n");
       out.write("\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t<th width=\"25%\">CartLine Id</th>\r\n");
-      out.write("\t\t\t\t\t<th width=\"25%\">User</th>\r\n");
-      out.write("\t\t\t\t\t<th width=\"25%\">Item Description</th>\r\n");
-      out.write("\t\t\t\t\t<th width=\"25%\">Quantity</th>\r\n");
+      out.write("\t\t\t\t\t<th width=\"10%\">Id</th>\r\n");
+      out.write("\t\t\t\t\t<th width=\"25%\">Description</th>\r\n");
+      out.write("\t\t\t\t\t<th width=\"25%\">Unit Price</th>\r\n");
+      out.write("\t\t\t\t\t<th width=\"10%\">Quantity</th>\r\n");
+      out.write("\t\t\t\t\t<th width=\"15%\">Create date</th>\r\n");
+      out.write("\t\t\t\t\t<th width=\"15%\">Update date</th>\r\n");
       out.write("\t\t\t\t</tr>\r\n");
       out.write("\r\n");
       out.write("\t\t\t</thead>\r\n");
@@ -115,7 +118,7 @@ public final class view_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f0 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f0.setParent(null);
-    // /WEB-INF/pages/template/jsp/Cart/view.jsp(6,14) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/pages/template/jsp/Cart/view.jsp(7,14) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f0.setValue("/Cart/home");
     int _jspx_eval_c_005furl_005f0 = _jspx_th_c_005furl_005f0.doStartTag();
     if (_jspx_th_c_005furl_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -134,7 +137,7 @@ public final class view_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f1 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f1.setParent(null);
-    // /WEB-INF/pages/template/jsp/Cart/view.jsp(7,14) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/pages/template/jsp/Cart/view.jsp(8,14) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f1.setValue("/Cart/List");
     int _jspx_eval_c_005furl_005f1 = _jspx_th_c_005furl_005f1.doStartTag();
     if (_jspx_th_c_005furl_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -153,31 +156,34 @@ public final class view_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /WEB-INF/pages/template/jsp/Cart/view.jsp(25,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/pages/template/jsp/Cart/view.jsp(28,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("cartLine");
-    // /WEB-INF/pages/template/jsp/Cart/view.jsp(25,3) name = items type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f0.setItems(new org.apache.jasper.el.JspValueExpression("/WEB-INF/pages/template/jsp/Cart/view.jsp(25,3) '${cartLines}'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${cartLines}",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
+    // /WEB-INF/pages/template/jsp/Cart/view.jsp(28,3) name = items type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f0.setItems(new org.apache.jasper.el.JspValueExpression("/WEB-INF/pages/template/jsp/Cart/view.jsp(28,3) '${cartLines}'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${cartLines}",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
       int _jspx_eval_c_005fforEach_005f0 = _jspx_th_c_005fforEach_005f0.doStartTag();
       if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("\t\t\t");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${cartLine.item.price }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("\r\n");
           out.write("\t\t\t<tr>\r\n");
           out.write("\t\t\t\t<td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${cartLine.id}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</td>\r\n");
           out.write("\t\t\t\t<td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${cartLine.audit.createUser}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("</td>\r\n");
-          out.write("\t\t\t\t<td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${cartLine.item.description}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</td>\r\n");
           out.write("\t\t\t\t<td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${cartLine.item.price}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("</td>\r\n");
+          out.write("\t\t\t\t<td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${cartLine.quantity}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("</td>\r\n");
+          out.write("\t\t\t\t<td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${cartLine.cart.audit.createDate}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("</td>\r\n");
+          out.write("\t\t\t\t<td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${cartLine.cart.audit.updateDate}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</td>\r\n");
           out.write("\t\t\t</tr>\r\n");
           out.write("\t\t");
