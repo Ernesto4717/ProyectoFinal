@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean update(User user) {
+	public boolean save(User user) {
 		// TODO Auto-generated method stub
 		if (isValidUser(user)) {
 			userRepository.save(user);
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 		}
 		return false;
 	}
-
+	
 	private Boolean isValidUser(final User user) {
 
 		if (user.getName() == null || user.getName().isEmpty()) {
@@ -64,5 +64,6 @@ public class UserServiceImpl implements UserService {
 		}
 		return true;
 	}
+
 
 }

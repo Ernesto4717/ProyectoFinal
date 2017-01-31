@@ -9,6 +9,6 @@ public interface UserService {
 	public List<User> userList();
 	public User user(String username);
 	public List<User> searchUser(String username);
-	public boolean update(User user);
+	public boolean save(User user);
 
 }

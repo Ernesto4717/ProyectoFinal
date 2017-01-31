@@ -1,4 +1,6 @@
 <dataset>
 	<user username="admin" password="admin" name="Administrator"
 		active="s"></user>
+	<user username="test" password="test" name="userForTest"
+		active="s"></user>
 </dataset>

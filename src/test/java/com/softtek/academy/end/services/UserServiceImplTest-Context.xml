@@ -33,7 +33,7 @@
 
 	<jdbc:embedded-database id="dataSource"
 		type="H2">
-		<jdbc:script location="scripts/cartTable.sql" />
+		<jdbc:script location="scripts/userTable.sql" />
 	</jdbc:embedded-database>
 
 

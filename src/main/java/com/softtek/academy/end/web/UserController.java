@@ -90,7 +90,7 @@ public class UserController {
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateUser(@ModelAttribute User user, HttpServletRequest request) {
 
-		if (userService.update(user)) {
+		if (userService.save(user)) {
 			return "redirect:/User/List";
 		}
 		return "redirect:/User/edit?username=" + user.getUsername() + "&status=Not valid";
@@ -100,15 +100,18 @@ public class UserController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute User user, @RequestParam String userRoleId,
 			@RequestParam String description) {
-		/*
-		 * System.out.println(user.getRole());
-		 * 
-		 * UserRole userRole =new UserRole();
-		 * userRole.setUserRoleId(userRoleId);
-		 * userRole.setDescription(description); user.setRole(userRole); if(
-		 * userService.update(user)){ return "redirect:/User/List"; } return
-		 * "redirect:/User/create?status=Not Valid";
-		 */
+
+		System.out.println(user.getRole());
+
+		UserRole userRole = new UserRole();
+		userRole.setUserRoleId(userRoleId);
+		userRole.setDescription(description);
+		user.setRole(userRole);
+		if (userService.update(user)) {
+			return "redirect:/User/List";
+		}
+		return "redirect:/User/create?status=Not Valid";
+
 		return null;
 	}
 }
