@@ -18,12 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.softtek.academy.end.domain.Cart;
-import com.softtek.academy.end.domain.ShipTo;
-import com.softtek.academy.end.domain.Status;
 import com.softtek.academy.end.services.CartLineService;
 import com.softtek.academy.end.services.CartService;
-import com.softtek.academy.end.services.ShipToService;
-import com.softtek.academy.end.services.StatusService;
 
 @RequestMapping(value = "/Cart")
 @Controller
@@ -32,12 +28,6 @@ public class CartController {
 
 	@Autowired
 	CartService cartService;
-
-	@Autowired
-	StatusService statusService;;
-
-	@Autowired
-	ShipToService shipToService;
 	
 	@Autowired 
 	CartLineService cartLineService;
@@ -62,13 +52,8 @@ public class CartController {
 	@RequestMapping(value = "/edit")
 	public String editUser(@RequestParam Long cartId, @RequestParam String status, Model model) {
 		Cart cart = cartService.cart(cartId);
-		List<Status> cartStatus = statusService.statusList("CART");
-		List<ShipTo> shipTos = shipToService.shipToList();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("cart", cart);
-		map.put("cartStatus", cartStatus);
-
-		map.put("shipTos", shipTos);
 		map.put("status", status);
 		model.addAttribute("map", map);
 		return "editCart";

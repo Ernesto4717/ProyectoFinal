@@ -40,11 +40,10 @@ import javax.persistence.Table;
 			name="update",
 				query="UPDATE user u , "
 						+ "SET "
-						+ "u.password = :password,"
-						+ "u.name= :name,"
-						+ "u.active= :active,"
-				
-				+ " WHERE u.username= :oldusername",
+						+ "u.password = :password, "
+						+ "u.name= :name, "
+						+ "u.active= :active "
+				+ " WHERE u.username= :oldusername ",
 				resultSetMapping = "updateResult")
 	})
 @SqlResultSetMappings({

@@ -98,20 +98,10 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addUser(@ModelAttribute User user, @RequestParam String userRoleId,
-			@RequestParam String description) {
-
-		System.out.println(user.getRole());
-
-		UserRole userRole = new UserRole();
-		userRole.setUserRoleId(userRoleId);
-		userRole.setDescription(description);
-		user.setRole(userRole);
-		if (userService.update(user)) {
+	public String addUser(@ModelAttribute User user) {
+		if (userService.save(user)) {
 			return "redirect:/User/List";
 		}
 		return "redirect:/User/create?status=Not Valid";
-
-		return null;
 	}
 }

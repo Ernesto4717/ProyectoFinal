@@ -29,10 +29,6 @@ import javax.persistence.Table;
 				@ColumnResult(name = "linesAmount", type = Double.class),
 				@ColumnResult(name = "shippingAmount", type = Double.class),
 				@ColumnResult(name = "cartAmount", type = Double.class),
-				@ColumnResult(name = "ship_to", type = String.class),
-				@ColumnResult(name = "shipToId", type = Long.class),
-				@ColumnResult(name = "status", type = String.class),
-				@ColumnResult(name = "statusId", type = Long.class),
 				@ColumnResult(name = "createdate", type = Date.class),
 				@ColumnResult(name = "updatedate", type = Date.class) }) }) })
 
@@ -54,13 +50,11 @@ public class Cart implements Serializable {
 		super();
 	}
 
-	public Cart(final Long cart_key, final Double linesAmount, final Double shippingAmount, final Double cartAmount,
-			final String ship_to, final Long shipToId, final String status, final Long statusId, final Date date,
+	public Cart(final Long cart_key, final Double linesAmount, final Double shippingAmount, final Double cartAmount, final Date date,
 			final Date update) {
 		super();
 		this.id = cart_key;
-		this.cartDetails = new CartDetails(linesAmount, shippingAmount, cartAmount, shipToId, ship_to, statusId,
-				status);
+		this.cartDetails = new CartDetails(linesAmount, shippingAmount, cartAmount);
 		this.audit = new Audit(date, update);
 	}
 
@@ -68,7 +62,7 @@ public class Cart implements Serializable {
 			final Long ship_to_id, final Long status_id) {
 		super();
 		this.id = cart_key;
-		this.cartDetails = new CartDetails(linesAmount, shippingAmount, cartAmount, ship_to_id, "", status_id, "");
+		this.cartDetails = new CartDetails(linesAmount, shippingAmount, cartAmount);
 
 	}
 

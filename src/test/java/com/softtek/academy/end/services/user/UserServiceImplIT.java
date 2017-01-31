@@ -1,4 +1,4 @@
-package com.softtek.academy.end.services;
+package com.softtek.academy.end.services.user;
 
 import java.util.List;
 
@@ -18,13 +18,14 @@ import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.softtek.academy.end.domain.User;
+import com.softtek.academy.end.services.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(inheritLocations = true)
 @DatabaseSetup(value = { "/dataset/user/default.xml" }, type = DatabaseOperation.CLEAN_INSERT)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
 		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
-public class UserServiceImplTest {
+public class UserServiceImplIT {
 	
 	@Autowired
 	UserService userService;

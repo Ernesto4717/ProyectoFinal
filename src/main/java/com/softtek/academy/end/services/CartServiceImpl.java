@@ -55,15 +55,6 @@ public class CartServiceImpl implements CartService{
 		if(cart.getCartDetails().getShippingAmount()==null ){
 			return false;
 		}
-		if(cart.getCartDetails().getShipTo()==null ){
-			return false;
-		}
-		if(cart.getCartDetails().getStatus()==null ){
-			return false;
-		}
-		if(cart.getCartDetails().getShipTo().getConcat()==null ){
-			return false;
-		}
 		return true;
 	}
 

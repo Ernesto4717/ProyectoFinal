@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
 
 			return false;
 		}
-		System.out.println(user.getPassword());
+		
 		if (user.getPassword() == null || user.getPassword().isEmpty()) {
 
 			return false;
