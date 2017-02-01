@@ -1,0 +1,8 @@
+<dataset>
+
+	<user username="admin" password="admin" name="Administrator"></user>
+
+	<cart cart_id="1" amount="2309.99" user_id="admin" create_user="jorge.gonzalez"
+		create_date="2014-07-24 13:00:00.0" update_date="2014-07-24 13:00:00.0" />
+
+</dataset>

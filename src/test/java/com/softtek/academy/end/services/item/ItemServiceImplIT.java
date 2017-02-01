@@ -19,7 +19,7 @@ import com.softtek.academy.end.domain.Item;
 import com.softtek.academy.end.services.ItemService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(inheritLocations = true)
+@ContextConfiguration("/Item-Context.xml")
 @DatabaseSetup(value = { "/dataset/item/default.xml" }, type = DatabaseOperation.CLEAN_INSERT)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
 		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })

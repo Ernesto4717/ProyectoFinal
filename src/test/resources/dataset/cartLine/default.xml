@@ -1,19 +1,11 @@
-<dataset>	
+<dataset>
+	<user username="admin" password="admin" name="Administrator"></user>
 
-	<status status_id="1100" description="Created" status_type="CART" />
-	<status status_id="1200" description="Ordered" status_type="CART" />
-	<status status_id="1300" description="Delivered" status_type="CART" />
-	<status status_id="1400" description="Canceled" status_type="CART" />
+	<cart cart_id="1" amount="2369.99" user_id="admin" create_user="jorge.gonzalez"
+		create_date="2014-07-24 13:00:00.0" update_date="2014-07-24 13:00:00.0" />
 
-	<ship_to ship_to_id="2" name="Jorge Gonzalez" address="Col. Obrera" />
-
-	<cart cart_id="1" lines_amount="2309.99" shipping_amount="60.00"
-		cart_amount="2369.99" ship_to_id="2" status_id="1300" create_user="jorge.gonzalez"
-		create_date="2014-07-24 13:00:00.0" update_user="jorge.gonzalez"
-		update_date="2014-07-24 13:00:00.0" />
-	
 	<cart_line cart_line_id="1" cart_id="1" item_id="4" quantity="1"></cart_line>
-	
-	<item item_id="1" description="Any description xd" features="a really good description" uom_id="set" unit_price="123.123" image_path="" stock="20" active="s"></item>
-	
+
+	<item item_id="1" description="productoNum1" unit_price="1234.56"
+		stock="20" />
 </dataset>

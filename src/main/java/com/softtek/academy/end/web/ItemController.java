@@ -30,7 +30,9 @@ public class ItemController {
 	
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public String addItem(@RequestParam Item item ){
-		
-		return "";
+		if(itemService.createItem(item)){
+			return "items";
+		}
+		return "createItem";
 	}
 }

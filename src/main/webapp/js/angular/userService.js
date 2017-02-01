@@ -17,9 +17,7 @@ myApp.controller("springController", function springController($scope,$http,
 		});
 	}
 }).factory("userService", function() {
-	console.log("userService");
-
-
+	console.log("userService")
 
 	return function() {
 

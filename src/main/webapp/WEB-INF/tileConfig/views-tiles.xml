@@ -40,6 +40,12 @@
 		<put-attribute name="body"
 			value="/WEB-INF/pages/template/jsp/Item/List.jsp" />
 	</definition>
+	
+	<definition name="createItem" extends="DefaultTemplate">
+		<put-attribute name="title" value="Items" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/template/jsp/Item/add.jsp" />
+	</definition>
 
 	<definition name="editCart" extends="DefaultTemplate">
 		<put-attribute name="title" value="States" />

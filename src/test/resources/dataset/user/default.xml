@@ -1,4 +1,3 @@
 <dataset>
-	<user username="admin" password="admin" name="Administrator"
-		active="s"></user>
+	<user username="admin" password="admin" name="Administrator"></user>
 </dataset>

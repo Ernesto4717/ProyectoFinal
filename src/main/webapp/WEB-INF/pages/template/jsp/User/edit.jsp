@@ -18,7 +18,8 @@
 	
 			<div class="form-group">
 				<div class="col-sm-4">
-					<label for="Username" class="sr-only">Username</label> <input type="text"
+					<label for="Username" class="sr-only">Username</label>
+					<input type="text"
 						class="form-control input-group-lg reg_name" name="username"
 						value="${map.users.username}" readonly="readonly">
 				</div>
