@@ -20,9 +20,16 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public Item item(int id) {
+	public Item findItemById(int id) {
 		// TODO Auto-generated method stub
 		return itemRepo.findItemById(id);
+	}
+
+	@Override
+	public boolean createItem(Item item) {
+		// TODO Auto-generated method stub
+		itemRepo.save(item);
+		return true;
 	}
 
 }

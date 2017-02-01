@@ -27,12 +27,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> searchUser(String Name) {
-		return userRepository.findUserByName(Name);
-	}
-
-	@Override
-	public boolean save(User user) {
+	public boolean create(User user) {
 		// TODO Auto-generated method stub
 		if (isValidUser(user)) {
 			userRepository.save(user);
@@ -40,15 +35,10 @@ public class UserServiceImpl implements UserService {
 		}
 		return false;
 	}
-	
+
 	private Boolean isValidUser(final User user) {
 
 		if (user.getName() == null || user.getName().isEmpty()) {
-
-			return false;
-		}
-
-		if (user.getStatus() == null || user.getStatus().isEmpty()) {
 
 			return false;
 		}
@@ -57,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
 			return false;
 		}
-		
+
 		if (user.getPassword() == null || user.getPassword().isEmpty()) {
 
 			return false;
@@ -65,5 +55,14 @@ public class UserServiceImpl implements UserService {
 		return true;
 	}
 
+	@Override
+	public boolean update(User user) {
+		// TODO Auto-generated method stub
+		if (isValidUser(user)) {
+			userRepository.updateUser(user.getPassword(), user.getName(), user.getUsername());
+			return true;
+		}
+		return false;
+	}
 
 }

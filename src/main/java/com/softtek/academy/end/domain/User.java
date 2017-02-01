@@ -20,8 +20,7 @@ import javax.persistence.Table;
 			name="findOneUser",
 				query="SELECT u.username as username, "
 						+ "u.password as password,"
-						+ "u.name as name, "
-						+ "u.active as active " 
+						+ "u.name as name "
 						+ " FROM user u "
 				+ " WHERE u.username = :username",
 				resultSetMapping = "UserMapping"),
@@ -30,19 +29,17 @@ import javax.persistence.Table;
 			name="findUserByName",
 				query="SELECT u.username as username, "
 						+ "u.password as password,"
-						+ "u.name as name, "
-						+ "u.active as active " 
+						+ "u.name as name "
 						+ " FROM user u "
 				+ " WHERE u.username = :username",
 				resultSetMapping = "UserMapping"),
 	
 	@NamedNativeQuery(
 			name="update",
-				query="UPDATE user u , "
+				query="UPDATE user u "
 						+ "SET "
 						+ "u.password = :password, "
-						+ "u.name= :name, "
-						+ "u.active= :active "
+						+ "u.name= :name "
 				+ " WHERE u.username= :oldusername ",
 				resultSetMapping = "updateResult")
 	})
@@ -54,8 +51,7 @@ import javax.persistence.Table;
 							columns = {
 								@ColumnResult(name = "username", type = String.class),
 								@ColumnResult(name = "password", type = String.class),
-								@ColumnResult(name = "name", type = String.class),
-								@ColumnResult(name = "active", type = String.class)
+								@ColumnResult(name = "name", type = String.class)
 							})
 			}),
 	@SqlResultSetMapping(name="UserMapping",
@@ -65,8 +61,7 @@ import javax.persistence.Table;
 					columns = {
 						@ColumnResult(name = "username", type = String.class),
 						@ColumnResult(name = "password", type = String.class),
-						@ColumnResult(name = "name", type = String.class),
-						@ColumnResult(name = "active", type = String.class)
+						@ColumnResult(name = "name", type = String.class)
 					})
 	}),
 	@SqlResultSetMapping(name="updateResult", columns = { @ColumnResult(name = "count")})
@@ -83,9 +78,6 @@ public class User implements Serializable{
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "active")
-	private String status;
-	
 	@Column(name = "password")
 	private String password;	
 	
@@ -93,11 +85,10 @@ public class User implements Serializable{
 		super();
 	}
 
-	public User(final String username, final String password, final String name, final String status) {
+	public User(final String username, final String password, final String name) {
 		super();
 		this.username = username;
 		this.name = name;
-		this.status = status;
 		this.password = password;	
 	}
 
@@ -125,15 +116,9 @@ public class User implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
 	@Override
 	public String toString() {
-		return "User [userName=" + username + ", name=" + name + ", status=" + status + "]";
+		return "User [userName=" + username + ", name=" + name + "]";
 	}
 	
 }

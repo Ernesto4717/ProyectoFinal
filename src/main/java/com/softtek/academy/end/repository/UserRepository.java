@@ -15,13 +15,8 @@ public interface UserRepository extends JpaRepository<User, String> {
 	@Query(name = "findOneUser", nativeQuery = true)
 	public User user(@Param ("username") String username);
 	
-	@Query(name = "findOneUser", nativeQuery = true)
-	public List<User> findUserByName(@Param ("username") String username);
-	
 	@Query(name="update", nativeQuery=true)
 	public boolean updateUser(@Param ("password") String password,	
 							@Param ("name") String name,
-							@Param ("active") String active,
-							@Param ("id") String id,
 							@Param ("oldusername") String oldusername);
 }

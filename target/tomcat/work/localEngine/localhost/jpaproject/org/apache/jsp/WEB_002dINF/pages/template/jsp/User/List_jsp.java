@@ -55,12 +55,6 @@ public final class List_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<li><a href=\"<c:url value=\"/User/home\"/>\">Home</a></li>\r\n");
       out.write("\t\t<li class=\"active\">User List</li>\r\n");
       out.write("\t</ol>\r\n");
-      out.write("\t<div class=\"form group\">\r\n");
-      out.write("\t\t<input type=\"search\" placeholder=\"search by name\" data-ng-model=\"name\">\r\n");
-      out.write("\t\t<button type=\"button\" class=\"btn-sm btn-default\" data-ng-click=\"search()\">\r\n");
-      out.write("\t\t\t<span class=\"glyphicon glyphicon-search\"></span>\r\n");
-      out.write("\t\t</button>\r\n");
-      out.write("\t</div>\r\n");
       out.write("\t<table class=\"table\">\r\n");
       out.write("\t\t<thead class=\"thead-inverse\">\r\n");
       out.write("\t\t\t<tr>\r\n");
@@ -74,7 +68,7 @@ public final class List_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\t\t<tr data-ng-repeat=\"user in userList\">\r\n");
       out.write("\t\t\t<td><a\r\n");
-      out.write("\t\t\t\tdata-ng-href=\"/User/edit?username={{user.username}}&status=\">{{user.username}}</a></td>\r\n");
+      out.write("\t\t\t\tdata-ng-href=\"/jpaproject/User/edit?username={{user.username}}\">{{user.username}}</a></td>\r\n");
       out.write("\t\t\t<td data-ng-bind=\"user.name\"></td>\r\n");
       out.write("\t\t\t<td data-ng-bind=\"user.role.description\"></td>\r\n");
       out.write("\t\t\t<td data-ng-bind=\"user.status\"></td>\r\n");

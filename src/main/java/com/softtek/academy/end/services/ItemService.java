@@ -7,5 +7,6 @@ import com.softtek.academy.end.domain.Item;
 public interface ItemService {
 
 	public List<Item> itemList();
-	public Item item(int id);
+	public Item findItemById(int id);
+	public boolean createItem(Item item);
 }

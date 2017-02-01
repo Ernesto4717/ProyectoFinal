@@ -1,0 +1,4 @@
+<dataset>
+	<ITEM item_id="1" description="productoNum1" unit_price="1234.56" stock="20"/>
+	<ITEM item_id="2" description="producto 2" unit_price="234.23" stock="20"/>
+</dataset>

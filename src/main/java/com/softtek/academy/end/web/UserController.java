@@ -46,22 +46,9 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/ListData", method = RequestMethod.GET)
-	public ResponseEntity<List<User>> getAllEmployeesJSON() {
+	public ResponseEntity<List<User>> getAllUsers() {
 		List<User> users = userService.userList();
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/Lists")
-	@ResponseBody
-	public ResponseEntity<?> searchUser(@RequestParam final String user) {
-		System.out.println(user);
-		List<User> users = userService.searchUser(user);
-		System.out.println(users);
-		if (users.size() > 1) {
-			return new ResponseEntity<List<User>>(users, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<List<User>>(users, HttpStatus.CONFLICT);
-		}
 	}
 
 	@RequestMapping(value = "/edit")
@@ -75,22 +62,14 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/create")
-	public ModelAndView create(@RequestParam String status) {
-
-		/*
-		 * List<UserRole> userRoleList = userRoleService.list(); List<String>
-		 * listStatus = userService.statusList(); Map<String,Object>map=new
-		 * HashMap<String, Object>(); map.put("userRole", userRoleList);
-		 * map.put("listStatus", listStatus); map.put("status", status); return
-		 * new ModelAndView("jsp/"+"User"+"/create","map",map);
-		 */
-		return null;
+	public String create() {
+		return "createUser";
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateUser(@ModelAttribute User user, HttpServletRequest request) {
 
-		if (userService.save(user)) {
+		if (userService.update(user)) {
 			return "redirect:/User/List";
 		}
 		return "redirect:/User/edit?username=" + user.getUsername() + "&status=Not valid";
@@ -99,7 +78,7 @@ public class UserController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute User user) {
-		if (userService.save(user)) {
+		if (userService.create(user)) {
 			return "redirect:/User/List";
 		}
 		return "redirect:/User/create?status=Not Valid";

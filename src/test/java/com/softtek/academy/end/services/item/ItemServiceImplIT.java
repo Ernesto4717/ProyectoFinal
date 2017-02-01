@@ -1,6 +1,4 @@
-package com.softtek.academy.end.services.user;
-
-import java.util.List;
+package com.softtek.academy.end.services.item;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,37 +15,30 @@ import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
-import com.softtek.academy.end.domain.User;
-import com.softtek.academy.end.services.UserService;
+import com.softtek.academy.end.domain.Item;
+import com.softtek.academy.end.services.ItemService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(inheritLocations = true)
-@DatabaseSetup(value = { "/dataset/user/default.xml" }, type = DatabaseOperation.CLEAN_INSERT)
+@DatabaseSetup(value = { "/dataset/item/default.xml" }, type = DatabaseOperation.CLEAN_INSERT)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
 		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
-public class UserServiceImplIT {
-	
+public class ItemServiceImplIT {
+
 	@Autowired
-	UserService userService;
+	ItemService itemService;
 	
 	@Test
-	@ExpectedDatabase("/dataset/user/expected.xml")
-	public void UserServiceCreateTest(){
-		User user = new User("test","test","userForTest");
-		userService.create(user);
+	public void shouldTrueWhenListIsOK() {
+		itemService.itemList();
+		Assert.assertNotNull(itemService);
 	}
 	
 	@Test
-	public void UserServiceReadTest(){
-		List<User> users = userService.userList();
-		Assert.assertTrue(!users.isEmpty());
-	}
-	
-	@Test
-	@ExpectedDatabase("/dataset/user/updateExpected.xml")
-	public void shouldTrueWhenUpdateIsCorrect(){
-		User user = new User("admin", "admina", "Administrator2");
-		userService.update(user);
+	@ExpectedDatabase("/dataset/item/updateExpected.xml")
+	public void shouldTrueWhenCreateIsOK(){
+		Item item = new Item(2,"producto 2",234.23,20);
+		itemService.createItem(item);
 	}
 
 }

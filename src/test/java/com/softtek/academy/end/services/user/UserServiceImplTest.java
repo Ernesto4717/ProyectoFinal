@@ -29,7 +29,7 @@ public class UserServiceImplTest {
 
 	@Test
 	public void shouldTrueWhenUserIsFound() {
-		User user = new User("admin", "admin", "Administrator", "s");
+		User user = new User("admin", "admin", "Administrator");
 		when(userService.user("admin")).thenReturn(user);
 		assertEquals(userService.user("admin"),user);
 		verify(userService).user("admin");

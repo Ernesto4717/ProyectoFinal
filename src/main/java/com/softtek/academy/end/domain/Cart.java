@@ -9,6 +9,8 @@ import javax.persistence.ConstructorResult;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
@@ -21,8 +23,7 @@ import javax.persistence.Table;
 		+ "c.lines_amount as linesAmount, " + "c.shipping_amount as shippingAmount, " + "c.cart_amount as cartAmount, "
 		+ "st.name as ship_to, " + "c.ship_to_id as shipToId, " + "s.description as status, "
 		+ "c.status_id as statusId," + "c.create_date as createdate, " + "c.update_date as updatedate "
-		+ " FROM cart c " + " JOIN ship_to st ON st.ship_to_id = c.ship_to_id "
-		+ " JOIN status s ON s.status_id = c.status_id "
+		+ " FROM cart c " 
 		+ "WHERE c.cart_id = :cartId ", resultSetMapping = "CartsMapping") })
 @SqlResultSetMappings({ @SqlResultSetMapping(name = "CartsMapping", classes = {
 		@ConstructorResult(targetClass = Cart.class, columns = { @ColumnResult(name = "cart_key", type = Long.class),
@@ -40,6 +41,10 @@ public class Cart implements Serializable {
 	@Column(name = "cart_id", unique=true , nullable = false)
 	private Long id;
 
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
 	@Embedded
 	private CartDetails cartDetails;
 

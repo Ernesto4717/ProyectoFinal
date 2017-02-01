@@ -63,9 +63,9 @@ public class Item implements Serializable {
 		super();
 	}
 	
-	public Item(int id) {
-		super();
-	}
+//	public Item(int id) {
+//		super();
+//	}
 
 	public Item(int id, String description, double price, int stock) {
 		super();
