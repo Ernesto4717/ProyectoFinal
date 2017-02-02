@@ -25,7 +25,7 @@
 			<add-attribute value="/js/angular/userService.js" />
 		</put-list-attribute>
 	</definition>
-	
+
 	<definition name="createUser" extends="DefaultTemplate">
 		<put-attribute name="title" value="Create User" />
 		<put-attribute name="body"
@@ -40,11 +40,14 @@
 		<put-attribute name="body"
 			value="/WEB-INF/pages/template/jsp/Item/List.jsp" />
 	</definition>
-	
+
 	<definition name="createItem" extends="DefaultTemplate">
 		<put-attribute name="title" value="Items" />
 		<put-attribute name="body"
 			value="/WEB-INF/pages/template/jsp/Item/add.jsp" />
+		<put-list-attribute name="javascript" inherit="true">
+			<add-attribute value="/js/angular/itemService.js" />
+		</put-list-attribute>
 	</definition>
 
 	<definition name="editCart" extends="DefaultTemplate">
@@ -58,7 +61,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/pages/template/jsp/User/edit.jsp" />
 	</definition>
-	
+
 	<definition name="viewCartLines" extends="DefaultTemplate">
 		<put-attribute name="title" value="Cart Details" />
 		<put-attribute name="body"

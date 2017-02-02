@@ -1,13 +1,12 @@
-myApp.controller("springController", function springController($scope,$http) {
+myApp.controller("itemController", function springController($scope, $http) {
 	$scope.item;
-	$scope.item.id;
-	$scope.item.price;
-	$scope.item.stock;
-	$scope.item.description;
-	
-	$scope.send(function(){
+
+	$scope.send = function() {
 		console.log($scope.item);
-		http.post("/jpaproject/Item/add/" , {params: {item: $scope.item}})
-	});
-	
+		$http.post("/jpaproject/item/add", $scope.item).then(
+				function success(response) {
+					console.log(response.data);
+					alert($scope.item);
+				});
+	};
 })

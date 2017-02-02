@@ -32,7 +32,7 @@
 	</div>
 	
 	<div class="form-group">
-		<input type="submit" class="btn btn-info" name="update" value="update"/>
+		<input type="submit" class="btn btn-info" data-ng-click="send()"/>
 	</div>
 	
 </form>
