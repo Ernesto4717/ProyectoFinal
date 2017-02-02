@@ -21,7 +21,7 @@ import com.softtek.academy.end.domain.User;
 import com.softtek.academy.end.services.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(inheritLocations = true)
+@ContextConfiguration("/User-Context.xml")
 @DatabaseSetup(value = { "/dataset/user/default.xml" }, type = DatabaseOperation.CLEAN_INSERT)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
 		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
