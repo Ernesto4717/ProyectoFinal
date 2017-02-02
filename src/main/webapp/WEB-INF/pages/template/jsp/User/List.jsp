@@ -18,9 +18,6 @@
 			<td><a
 				data-ng-href="/jpaproject/User/edit?username={{user.username}}">{{user.username}}</a></td>
 			<td data-ng-bind="user.name"></td>
-			<td data-ng-bind="user.role.description"></td>
-			<td data-ng-bind="user.status"></td>
-			<td data-ng-show="user.status=='S'">Delete</td>
 		</tr>
 		</tbody>
 	</table>

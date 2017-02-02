@@ -44,7 +44,7 @@
 	<definition name="createItem" extends="DefaultTemplate">
 		<put-attribute name="title" value="Items" />
 		<put-attribute name="body"
-			value="/WEB-INF/pages/template/jsp/Item/add.jsp" />
+			value="/WEB-INF/pages/template/jsp/Item/create.jsp" />
 		<put-list-attribute name="javascript" inherit="true">
 			<add-attribute value="/js/angular/itemService.js" />
 		</put-list-attribute>

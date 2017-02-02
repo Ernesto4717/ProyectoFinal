@@ -18,12 +18,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cart_line")
-@NamedNativeQueries({ @NamedNativeQuery(name = "findCartLinesByCartId", query = "SELECT c.cart_line_id as cartLine, "
-		+ " ca.cart_id as cartId, " + " i.item_id as itemId, " + " c.quantity as quantity, "
-		+ " ca.create_user as createUser, " + " ca.lines_amount as linesAmount, " + " i.description as itemDesc, "
-		+ " i.stock as stock, " + " ca.create_date as date, " + " ca.update_date as updatexd, "
-		+ " i.unit_price as itemPrice " + " FROM cart_line c " + "JOIN cart ca ON ca.cart_id = c.cart_id "
-		+ "JOIN item i ON i.item_id = c.item_id " + "Where c.cart_id= :cartId", resultSetMapping = "CartLineMapping") })
+@NamedNativeQueries({ @NamedNativeQuery(name = "findCartLinesByCartId", 
+query = "SELECT c.cart_line_id as cartLine, "
+		+ " ca.cart_id as cartId, " 
+		+ " i.item_id as itemId, " 
+		+ " c.quantity as quantity, "
+		+ " ca.create_user as createUser, " 
+		+ " ca.amount as linesAmount, " 
+		+ " i.description as itemDesc, "
+		+ " i.stock as stock, " 
+		+ " ca.create_date as date, " 
+		+ " ca.update_date as updatexd, "
+		+ " i.unit_price as itemPrice " 
+		+ " FROM cart_line c " 
+		+ "JOIN cart ca ON ca.cart_id = c.cart_id "
+		+ "JOIN item i ON i.item_id = c.item_id " 
+		+ "Where c.cart_id= :cartId", resultSetMapping = "CartLineMapping") })
 @SqlResultSetMappings({ @SqlResultSetMapping(name = "CartLineMapping", classes = {
 		@ConstructorResult(targetClass = CartLine.class, columns = {
 				@ColumnResult(name = "cartLine", type = Long.class), @ColumnResult(name = "cartId", type = Long.class),

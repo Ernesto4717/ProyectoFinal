@@ -19,10 +19,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cart")
-@NamedNativeQueries({ @NamedNativeQuery(name = "findOneCart", query = "SELECT c.cart_id as cart_key, "
-		+ "c.lines_amount as linesAmount, " + "c.shipping_amount as shippingAmount, " + "c.cart_amount as cartAmount, "
-		+ "st.name as ship_to, " + "c.ship_to_id as shipToId, " + "s.description as status, "
-		+ "c.status_id as statusId," + "c.create_date as createdate, " + "c.update_date as updatedate "
+@NamedNativeQueries({ @NamedNativeQuery(name = "findOneCart", 
+query = "SELECT c.cart_id as cart_key, "
+		+ "c.lines_amount as linesAmount, " 
+		+ "c.shipping_amount as shippingAmount, " 
+		+ "c.create_date as createdate, " 
+		+ "c.update_date as updatedate "
 		+ " FROM cart c " 
 		+ "WHERE c.cart_id = :cartId ", resultSetMapping = "CartsMapping") })
 @SqlResultSetMappings({ @SqlResultSetMapping(name = "CartsMapping", classes = {
@@ -45,8 +47,8 @@ public class Cart implements Serializable {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@Embedded
-	private CartDetails cartDetails;
+	@Column(name="amount")
+	private Double amount;
 
 	@Embedded
 	private Audit audit;
@@ -59,7 +61,6 @@ public class Cart implements Serializable {
 			final Date update) {
 		super();
 		this.id = cart_key;
-		this.cartDetails = new CartDetails(linesAmount, shippingAmount, cartAmount);
 		this.audit = new Audit(date, update);
 	}
 
@@ -67,7 +68,6 @@ public class Cart implements Serializable {
 			final Long ship_to_id, final Long status_id) {
 		super();
 		this.id = cart_key;
-		this.cartDetails = new CartDetails(linesAmount, shippingAmount, cartAmount);
 
 	}
 
@@ -76,7 +76,6 @@ public class Cart implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((audit == null) ? 0 : audit.hashCode());
-		result = prime * result + ((cartDetails == null) ? 0 : cartDetails.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
@@ -95,11 +94,6 @@ public class Cart implements Serializable {
 				return false;
 		} else if (!audit.equals(other.audit))
 			return false;
-		if (cartDetails == null) {
-			if (other.cartDetails != null)
-				return false;
-		} else if (!cartDetails.equals(other.cartDetails))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -114,14 +108,6 @@ public class Cart implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public CartDetails getCartDetails() {
-		return cartDetails;
-	}
-
-	public void setCartDetails(CartDetails cartDetails) {
-		this.cartDetails = cartDetails;
 	}
 
 	public Audit getAudit() {

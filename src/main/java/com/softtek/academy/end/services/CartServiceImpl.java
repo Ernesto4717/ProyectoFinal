@@ -37,22 +37,7 @@ public class CartServiceImpl implements CartService{
 		return false;
 	}
 	private Boolean isValidCart(final Cart cart) {
-		
-
-		
-		if (cart.getCartDetails()== null) {
-			return false;
-		}
 		if (cart.getId()== null) {
-			return false;
-		}
-		if(cart.getCartDetails().getCartAmount()==null ){
-			return false;
-		}
-		if(cart.getCartDetails().getLinesAmount()==null ){
-			return false;
-		}
-		if(cart.getCartDetails().getShippingAmount()==null ){
 			return false;
 		}
 		return true;

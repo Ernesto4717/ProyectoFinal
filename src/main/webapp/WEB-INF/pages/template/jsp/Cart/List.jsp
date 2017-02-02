@@ -29,7 +29,7 @@
 			<tbody>
 
 				<tr data-ng-repeat="cart in cartList">
-					<td><a data-ng-href="edit?cartId={{cart.id}}&status=">{{cart.id}}</a></td>
+					<td><a data-ng-href="edit?cartId={{cart.id}}">{{cart.id}}</a></td>
 
 					<td data-ng-bind="cart.cartDetails.linesAmount | currency"></td>
 					<td data-ng-bind="cart.cartDetails.shippingAmount"></td>

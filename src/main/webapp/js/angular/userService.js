@@ -1,4 +1,4 @@
-myApp.controller("springController", function springController($scope,$http,
+myApp.controller("springController", function springController($scope,$http,$window,
 		userService) {
 	$scope.userList = [];
 	$http({
@@ -15,7 +15,18 @@ myApp.controller("springController", function springController($scope,$http,
 			console.log(response.data);
 			$scope.userList = response.data;
 		});
-	}
+	};
+	
+	$scope.user;
+
+	$scope.send = function() {
+		console.log($scope.user);
+		$http.post("/jpaproject/User/add", $scope.user).success(function(response) {
+					alert("El usuario a sido creado");
+					$window.location="/jpaproject/User/List";
+				});
+	};
+	
 }).factory("userService", function() {
 	console.log("userService")
 
