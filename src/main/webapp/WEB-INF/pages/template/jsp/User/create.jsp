@@ -1,9 +1,9 @@
 <div data-ng-controller="springController">
 
 	<ol class="breadcrumb">
-		<li><a href="<c:url value="/User/home"/>">Home</a></li>
-		<li><a href="<c:url value="/User/List"/>">List</a></li>
-		<li class="active">Add Item</li>
+		<li><a data-ng-href="/jpaproject/home">Home</a></li>
+		<li><a data-ng-href="/jpaproject/User/home">User</a></li>
+		<li class="active">Create</li>
 	</ol>
 
 

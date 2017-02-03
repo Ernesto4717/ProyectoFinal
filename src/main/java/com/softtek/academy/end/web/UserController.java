@@ -36,7 +36,7 @@ public class UserController {
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String root() {
-		return "home";
+		return "userHome";
 	}
 
 	@RequestMapping(value = "/List")

@@ -19,7 +19,7 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.softtek.academy.end.domain.CartLine;
 import com.softtek.academy.end.services.CartLineService;
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("Cart-Context.xml")
+@ContextConfiguration("/Cart-Context.xml")
 @DatabaseSetup(value = {"/dataset/cartLine/default.xml" },  type = DatabaseOperation.CLEAN_INSERT)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
 		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })

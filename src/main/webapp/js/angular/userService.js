@@ -8,15 +8,6 @@ myApp.controller("springController", function springController($scope,$http,$win
 		$scope.userList = response.data;
 	});
 	
-	$scope.search=function(){
-		console.log($scope.name);
-		$http.get("/jpaproject/User/Lists/" , {params: {name: $scope.name}})
-		.then(function success(response) {
-			console.log(response.data);
-			$scope.userList = response.data;
-		});
-	};
-	
 	$scope.user;
 
 	$scope.send = function() {

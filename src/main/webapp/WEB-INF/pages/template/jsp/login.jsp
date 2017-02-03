@@ -1,9 +1,9 @@
-<div data-ng-controller="itemController">
+
+<div data-ng-controller="loginController">
 
 	<ol class="breadcrumb">
-		<li><a data-ng-href="/jpaproject/home">Home</a></li>
-		<li><a data-ng-href="/jpaproject/Item/home">Item</a></li>
-		<li class="active">Create</li>
+		<li><a href="<c:url value="/home"/>">Home</a></li>
+		<li class="active">Login</li>
 	</ol>
 
 

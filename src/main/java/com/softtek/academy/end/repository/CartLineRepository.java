@@ -11,6 +11,7 @@ import com.softtek.academy.end.domain.CartLine;
 
 @Repository
 public interface CartLineRepository extends JpaRepository<CartLine, Integer>  {
+	
 
 	@Query(name ="findCartLinesByCartId",nativeQuery=true)
 	public List<CartLine> findCartLinesByCartId(@Param ("cartId") Long cartId);

@@ -34,7 +34,7 @@ public class CartController {
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String root() {
-		return "home";
+		return "cartHome";
 	}
 
 	@RequestMapping(value = "/List")

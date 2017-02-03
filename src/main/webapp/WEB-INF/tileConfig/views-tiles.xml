@@ -3,9 +3,24 @@
 "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
+
 	<definition name="home" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/pages/template/body.jsp" />
+	</definition>
 
+	<definition name="cartHome" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/template/jsp/Cart/home.jsp" />
+	</definition>
+
+	<definition name="userHome" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/template/jsp/User/home.jsp" />
+	</definition>
+
+	<definition name="itemHome" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/template/jsp/Item/home.jsp" />
 	</definition>
 
 	<definition name="carts" extends="DefaultTemplate">
@@ -39,6 +54,9 @@
 		<put-attribute name="title" value="Items" />
 		<put-attribute name="body"
 			value="/WEB-INF/pages/template/jsp/Item/List.jsp" />
+		<put-list-attribute name="javascript" inherit="true">
+			<add-attribute value="/js/angular/itemService.js" />
+		</put-list-attribute>
 	</definition>
 
 	<definition name="createItem" extends="DefaultTemplate">
@@ -66,6 +84,12 @@
 		<put-attribute name="title" value="Cart Details" />
 		<put-attribute name="body"
 			value="/WEB-INF/pages/template/jsp/Cart/view.jsp" />
+	</definition>
+
+	<definition name="login" extends="DefaultTemplate">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/template/jsp/login.jsp" />
 	</definition>
 
 </tiles-definitions>

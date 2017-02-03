@@ -11,37 +11,30 @@
 		</p>
 	</div>
 
-</div>
-
-
+</div>|
 
 <div class="container-center text-center">
 	<div class="container marketing">
-
 	
 		<div class="row">
 			<div class="col-lg-6">
+			<a  href="<c:url value="User/home"/>">
 				<img class="img-circle"
 					src="<c:url value="/resources/images/user.png"/>" alt="User"
 					width="140" height="140">
+					</a>
 				<h2>User</h2>
 				<p></p>
-				<p>
-					<a class="btn btn-default" href="#" role="button">in maintenance	
-						&raquo;</a>
-				</p>
 			</div>
 		
 			<div class="col-lg-6">
+			<a  href="<c:url value="Cart/home"/>">
 				<img class="img-circle"
 					src="<c:url value="/resources/images/cart.png"/>" alt="Cart"
 					width="140" height="140">
+					</a>
 				<h2>Cart</h2>
 				<p></p>
-				<p>
-					<a class="btn btn-default" href="#" role="button" >in maintenance
-						&raquo;</a>
-				</p>
 			</div>
 		
 		</div>

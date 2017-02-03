@@ -36,12 +36,16 @@ query = "SELECT c.cart_line_id as cartLine, "
 		+ "Where c.cart_id= :cartId", resultSetMapping = "CartLineMapping") })
 @SqlResultSetMappings({ @SqlResultSetMapping(name = "CartLineMapping", classes = {
 		@ConstructorResult(targetClass = CartLine.class, columns = {
-				@ColumnResult(name = "cartLine", type = Long.class), @ColumnResult(name = "cartId", type = Long.class),
+				@ColumnResult(name = "cartLine", type = Long.class), 
+				@ColumnResult(name = "cartId", type = Long.class),
 				@ColumnResult(name = "createUser", type = String.class),
 				@ColumnResult(name = "linesAmount", type = Double.class),
-				@ColumnResult(name = "itemId", type = int.class), @ColumnResult(name = "itemDesc", type = String.class),
-				@ColumnResult(name = "itemPrice", type = Double.class), @ColumnResult(name = "stock", type = int.class),
-				@ColumnResult(name = "date", type = Date.class), @ColumnResult(name = "updatexd", type = Date.class),
+				@ColumnResult(name = "itemId", type = int.class), 
+				@ColumnResult(name = "itemDesc", type = String.class),
+				@ColumnResult(name = "itemPrice", type = Double.class), 
+				@ColumnResult(name = "stock", type = int.class),
+				@ColumnResult(name = "date", type = Date.class), 
+				@ColumnResult(name = "updatexd", type = Date.class),
 				@ColumnResult(name = "quantity", type = int.class) }) }) })
 public class CartLine implements Serializable {
 

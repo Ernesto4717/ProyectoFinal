@@ -3,9 +3,10 @@
 
 	<cart cart_id="1" amount="2369.99" user_id="admin" create_user="jorge.gonzalez"
 		create_date="2014-07-24 13:00:00.0" update_date="2014-07-24 13:00:00.0" />
+	<item item_id="1" description="productoNum1" unit_price="1234.56"
+		stock="20" />
 
 	<cart_line cart_line_id="1" cart_id="1" item_id="4" quantity="1"></cart_line>
 
-	<item item_id="1" description="productoNum1" unit_price="1234.56"
-		stock="20" />
+
 </dataset>

@@ -9,8 +9,8 @@ CREATE TABLE cart (
   amount decimal(10,2) ,
   user_id varchar(20) ,
   create_user varchar(30) ,
-  update_date varchar(20) ,
-  create_date varchar(30) 
+  update_date date ,
+  create_date date 
 );
 
 CREATE TABLE cart_line (

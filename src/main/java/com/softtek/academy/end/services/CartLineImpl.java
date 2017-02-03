@@ -16,6 +16,7 @@ public class CartLineImpl implements CartLineService {
 
 	@Override
 	public List<CartLine> listByCartId(Long id) {
+		System.out.println(id);
 		return cartLineRepo.findCartLinesByCartId(id);
 	}
 
