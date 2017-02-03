@@ -1,1 +1,1 @@
-var myApp= angular.module("springApp",[]);
+var myApp= angular.module("springApp",['ngRoute']);

@@ -3,6 +3,7 @@ package com.softtek.academy.end.services.user;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,7 @@ public class UserServiceImplIT {
 	}
 	
 	@Test
+	@Ignore
 	@ExpectedDatabase("/dataset/user/updateExpected.xml")
 	public void shouldTrueWhenUpdateIsCorrect(){
 		User user = new User("admin", "admina", "Administrator2");

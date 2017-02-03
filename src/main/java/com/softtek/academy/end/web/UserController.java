@@ -1,8 +1,6 @@
 package com.softtek.academy.end.web;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -50,13 +48,17 @@ public class UserController {
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/edit")
-	public String editUser(@RequestParam String username, Model model) {
-		User user = userService.user(username);
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("users", user);
-		model.addAttribute("map", map);
+	@RequestMapping(value="/edit")
+	public String edit(){
 		return "editUser";
+	}
+	
+	@RequestMapping(value = "/editData")
+	public ResponseEntity<User> editUser(@RequestParam String username) {
+		System.out.println("ASFDAFLKQWJFLQF");
+		System.out.println(username);
+		User user = userService.user(username);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 
 	}
 

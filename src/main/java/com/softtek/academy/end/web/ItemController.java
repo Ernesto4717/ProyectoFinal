@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.softtek.academy.end.domain.Item;
-import com.softtek.academy.end.domain.User;
 import com.softtek.academy.end.services.ItemService;
 
 @RequestMapping(value = "/Item")

@@ -17,7 +17,7 @@
 		<tbody>
 			<tr data-ng-repeat="user in userList">
 				<td><a
-					data-ng-href="/jpaproject/User/edit?username={{user.username}}">{{user.username}}</a></td>
+					data-ng-href="/jpaproject/User/edit#?username={{user.username}}">{{user.username}}</a></td>
 				<td data-ng-bind="user.name"></td>
 			</tr>
 		</tbody>
