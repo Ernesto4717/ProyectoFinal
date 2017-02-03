@@ -1,12 +1,16 @@
 myApp.controller(
 		"springController",
-		function springController($scope, $http, $window,$location, userService) {
-			  $scope.$location = {};
-			  angular.forEach('protocol host port path search hash'.split(' '), function(method) {
-			   $scope.$location[method] = function() {
-			     var result = $location[method]();
-			     return angular.isObject(result) ? angular.toJson(result) : result;
-			   };});
+		function springController($scope, $http, $window, $location,
+				userService) {
+			$scope.$location = {};
+			angular.forEach('protocol host port path search hash'.split(' '),
+					function(method) {
+						$scope.$location[method] = function() {
+							var result = $location[method]();
+							return angular.isObject(result) ? angular
+									.toJson(result) : result;
+						};
+					});
 			$scope.userList = [];
 			$http({
 				method : "GET",
@@ -31,7 +35,9 @@ myApp.controller(
 				$http({
 					method : "GET",
 					url : "/jpaproject/User/editData",
-					params : { "username": $location.search().username}
+					params : {
+						"username" : $location.search().username
+					}
 				}).then(function success(response) {
 					$scope.user = response.data;
 				});

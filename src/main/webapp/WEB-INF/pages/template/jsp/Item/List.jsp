@@ -15,7 +15,7 @@
 	</thead>
 	<tbody>
 		<tr data-ng-repeat="item in items">
-			<td><a data-ng-href="/jpaproject/Item/edit?itemId={{item.id}}">{{item.id}}</a></td>
+			<td><a data-ng-href="/jpaproject/Item/edit#?itemId={{item.id}}">{{item.id}}</a></td>
 			<td data-ng-bind="item.description"></td>
 			<td data-ng-bind="item.price"></td>
 			<td data-ng-bind="item.stock"></td>

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.softtek.academy.end.domain.Item;
 import com.softtek.academy.end.services.ItemService;
@@ -26,7 +27,7 @@ public class ItemController {
 		return "itemHome";
 	}
 
-	@RequestMapping(value = "/list")
+	@RequestMapping(value = "/List")
 	public String itemList(Model model) {
 		model.addAttribute("items", itemService.itemList());
 		return "items";
@@ -37,6 +38,18 @@ public class ItemController {
 		List<Item> items = itemService.itemList();
 		return new ResponseEntity<List<Item>>(items, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/edit")
+	public String edit(){
+		return "editItem";
+	}
+	
+	@RequestMapping(value="/editData")
+	public ResponseEntity<Item> editItem(@RequestParam int itemId) {
+		Item item = itemService.findItemById(itemId);
+		return new ResponseEntity<Item>(item, HttpStatus.OK);
+	}
+	
 
 	@RequestMapping(value = "/create")
 	public String createItem() {

@@ -55,11 +55,9 @@ public class UserController {
 	
 	@RequestMapping(value = "/editData")
 	public ResponseEntity<User> editUser(@RequestParam String username) {
-		System.out.println("ASFDAFLKQWJFLQF");
-		System.out.println(username);
+		
 		User user = userService.user(username);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
-
 	}
 
 	@RequestMapping(value = "/create")

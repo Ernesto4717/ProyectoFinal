@@ -77,6 +77,15 @@
 			<add-attribute value="/js/angular/itemService.js" />
 		</put-list-attribute>
 	</definition>
+	
+	<definition name="editItem" extends="DefaultTemplate">
+		<put-attribute name="title" value="Items" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/template/jsp/Item/edit.jsp" />
+		<put-list-attribute name="javascript" inherit="true">
+			<add-attribute value="/js/angular/itemService.js" />
+		</put-list-attribute>
+	</definition>
 
 	<definition name="editCart" extends="DefaultTemplate">
 		<put-attribute name="title" value="States" />

@@ -32,10 +32,10 @@ import javax.persistence.Table;
 					@ConstructorResult(
 							targetClass = Item.class,
 							columns = {
-								@ColumnResult(name = "username", type = Integer.class),
-								@ColumnResult(name = "password", type = String.class),
-								@ColumnResult(name = "name", type = Double.class),
-								@ColumnResult(name = "active", type = Integer.class)
+								@ColumnResult(name = "id", type = Integer.class),
+								@ColumnResult(name = "description", type = String.class),
+								@ColumnResult(name = "price", type = Double.class),
+								@ColumnResult(name = "stock", type = Integer.class)
 							})
 			})
 	})

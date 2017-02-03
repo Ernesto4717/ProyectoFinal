@@ -1,6 +1,7 @@
-myApp.controller("itemController", function springController($scope, $http,$window) {
+myApp.controller("itemController", function springController($scope, $http,
+		$window,$location) {
 	$scope.item;
-	
+
 	$scope.items = [];
 	$http({
 		method : "GET",
@@ -11,9 +12,23 @@ myApp.controller("itemController", function springController($scope, $http,$wind
 
 	$scope.send = function() {
 		console.log($scope.item);
-		$http.post("/jpaproject/item/add", $scope.item).success(function(response) {
+		$http.post("/jpaproject/Item/add", $scope.item).success(
+				function(response) {
 					alert($scope.item);
-					$window.location="/jpaproject/item/list";
+					$window.location = "/jpaproject/Item/List";
 				});
 	};
-})
+	$scope.edit = function() {
+
+		$http({
+			method : "GET",
+			url : "/jpaproject/Item/editData",
+			params : {
+				"itemId" : $location.search().itemId
+			}
+		}).then(function success(response) {
+			$scope.item = response.data;
+		});
+	}
+
+});
