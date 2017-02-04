@@ -21,17 +21,15 @@ import javax.persistence.Table;
 @Table(name = "cart")
 @NamedNativeQueries({ @NamedNativeQuery(name = "findOneCart", 
 query = "SELECT c.cart_id as cart_key, "
-		+ "c.lines_amount as linesAmount, " 
-		+ "c.shipping_amount as shippingAmount, " 
+		+ "c.amount as linesAmount, " 
 		+ "c.create_date as createdate, " 
 		+ "c.update_date as updatedate "
 		+ " FROM cart c " 
 		+ "WHERE c.cart_id = :cartId ", resultSetMapping = "CartsMapping") })
 @SqlResultSetMappings({ @SqlResultSetMapping(name = "CartsMapping", classes = {
-		@ConstructorResult(targetClass = Cart.class, columns = { @ColumnResult(name = "cart_key", type = Long.class),
+		@ConstructorResult(targetClass = Cart.class, columns = {
+				@ColumnResult(name = "cart_key", type = Long.class),
 				@ColumnResult(name = "linesAmount", type = Double.class),
-				@ColumnResult(name = "shippingAmount", type = Double.class),
-				@ColumnResult(name = "cartAmount", type = Double.class),
 				@ColumnResult(name = "createdate", type = Date.class),
 				@ColumnResult(name = "updatedate", type = Date.class) }) }) })
 
@@ -57,10 +55,11 @@ public class Cart implements Serializable {
 		super();
 	}
 
-	public Cart(final Long cart_key, final Double linesAmount, final Double shippingAmount, final Double cartAmount, final Date date,
+	public Cart(final Long cart_key, final Double linesAmount, final Date date,
 			final Date update) {
 		super();
 		this.id = cart_key;
+		this.amount=linesAmount;
 		this.audit = new Audit(date, update);
 	}
 
@@ -116,6 +115,22 @@ public class Cart implements Serializable {
 
 	public void setAudit(Audit audit) {
 		this.audit = audit;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.softtek.academy.end.domain.Cart;
+import com.softtek.academy.end.domain.CartLine;
 import com.softtek.academy.end.services.CartLineService;
 import com.softtek.academy.end.services.CartService;
 
@@ -28,8 +29,8 @@ public class CartController {
 
 	@Autowired
 	CartService cartService;
-	
-	@Autowired 
+
+	@Autowired
 	CartLineService cartLineService;
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
@@ -64,10 +65,24 @@ public class CartController {
 	public String updateCart(HttpServletRequest request) {
 		return null;
 	}
-	
-	@RequestMapping(value="/view")
-	public String viewCartLines(@RequestParam Long cartId,Model model){
-		model.addAttribute("cartLines",cartLineService.listByCartId(cartId) );
+
+	@RequestMapping(value = "/view")
+	public String viewCartLines() {
 		return "viewCartLines";
+	}
+
+	@RequestMapping(value = "/viewData", method = RequestMethod.GET)
+	public ResponseEntity<List<CartLine>> getAllCartLines(@RequestParam Long cartId) {
+		return new ResponseEntity<List<CartLine>>((cartLineService.listByCartId(cartId)), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/createCartLine", method = RequestMethod.GET)
+	public ResponseEntity<?> createCartLine(@RequestParam int itemId, @RequestParam Long cartId) {
+		System.out.println("golis");
+		if (cartLineService.addCartLine(itemId, cartId))
+			return new ResponseEntity<String>("", HttpStatus.OK);
+		else {
+			return new ResponseEntity<String>("", HttpStatus.CONFLICT);
+		}
 	}
 }

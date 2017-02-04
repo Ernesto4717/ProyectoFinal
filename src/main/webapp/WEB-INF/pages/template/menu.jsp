@@ -25,7 +25,7 @@
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Item<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a data-ng-href="/jpaproject/Item/home">Home</a></li>
-          <li><a data-ng-href="/jpaproject/Item/list">List</a></li>
+          <li><a data-ng-href="/jpaproject/Item/List">List</a></li>
           <li><a  data-ng-href="/jpaproject/Item/create">Create</a></li>
         </ul>
       </li>

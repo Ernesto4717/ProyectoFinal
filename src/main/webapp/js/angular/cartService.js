@@ -1,20 +1,28 @@
-myApp.controller("cartController",function cartController($scope,cartService,$http){
-	
+myApp.controller("cartController", function cartController($scope, $http,
+		$location) {
+
 	$scope.cartList = [];
+	$scope.cartLines = [];
+
 	$http({
 		method : "GET",
 		url : "/jpaproject/Cart/ListData"
 	}).then(function success(response) {
 		$scope.cartList = response.data;
-		console.log(response.data);
 	});
-	
 
-	
-});
-myApp.factory("cartService",function(){
-	console.log("cartService");
-	return function(){
-		
-	};
+	$scope.cartId = $location.search().cartId;
+
+	$scope.viewCartLines = function() {
+		$http({
+			method : "GET",
+			url : "/jpaproject/Cart/viewData",
+			params : {
+				"cartId" : $scope.cartId
+			}
+		}).then(function success(response) {
+			$scope.cartLines = response.data;
+		});
+	}
+
 });

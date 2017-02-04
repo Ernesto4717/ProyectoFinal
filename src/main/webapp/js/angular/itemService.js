@@ -30,5 +30,21 @@ myApp.controller("itemController", function springController($scope, $http,
 			$scope.item = response.data;
 		});
 	}
+	
+	$scope.cartId = $location.search().cartId;
+
+	$scope.createCartLine = function(itemId) {
+		$http({
+			method : "GET",
+			url : "/jpaproject/Cart/createCartLine",
+			params : {
+				"itemId" : itemId,
+				"cartId" : $scope.cartId
+			}
+		}).then(function success(response) {
+			alert("Item Added");
+			$scope.cartLines = response.data;
+		});
+	}
 
 });

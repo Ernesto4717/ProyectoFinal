@@ -1,17 +1,15 @@
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<div data-ng-controller="cartController" data-ng-init="viewCartLines()">
 <ol class="breadcrumb">
-	<li><a href="<c:url value="/Cart/home"/>">Home</a></li>
-	<li><a href="<c:url value="/Cart/List"/>">List</a></li>
-	<li class="active">Cart lines</li>
+	<li><a href="/jpaproject/home">Home</a></li>
+	<li><a href="List">List</a></li>
+	<li class="active">Cart # {{cartId}}</li>
 </ol>
 
 <div>
+<a data-ng-href="/jpaproject/Item/List#?cartId={{cartId}}">
+<button class="btn btn-primary">Add Product</button>
+</a>
 <div class="table-responsive">
-
 		<table class="table">
 			<thead class="thead-inverse">
 				<tr>
@@ -19,23 +17,18 @@
 					<th width="25%">Description</th>
 					<th width="25%">Unit Price</th>
 					<th width="10%">Quantity</th>
-					<th width="15%">Create date</th>
-					<th width="15%">Update date</th>
 				</tr>
 
 			</thead>
 			<tbody>
-			<c:forEach var="cartLine" items="${cartLines}">
-			<tr>
-				<td>${cartLine.id}</td>
-				<td>${cartLine.item.description}</td>
-				<td>${cartLine.item.price}</td>
-				<td>${cartLine.quantity}</td>
-				<td>${cartLine.cart.audit.createDate}</td>
-				<td>${cartLine.cart.audit.updateDate}</td>
+			<tr data-ng-repeat="cartLine in cartLines">
+				<td data-ng-bind="cartLine.id"></td>
+				<td data-ng-bind="cartLine.item.description"></td>
+				<td data-ng-bind="cartLine.item.price | currency"></td>
+				<td data-ng-bind="cartLine.quantity"></td>
 			</tr>
-		</c:forEach>
 			</tbody>
 		</table>
 	</div>
+</div>
 </div>
