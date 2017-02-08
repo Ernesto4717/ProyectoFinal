@@ -78,7 +78,7 @@ public class CartLine implements Serializable {
 			Double itemPrice, int stock, Date date, Date update, int quantity) {
 		super();
 		this.id = id;
-		this.cart = new Cart(cartId, linesAmount,  date, update);
+		this.cart = new Cart(cartId,createUser, linesAmount,  date, update);
 		this.item = new Item(itemId, itemDesc, itemPrice, stock);
 		this.quantity = quantity;
 	}

@@ -22,13 +22,16 @@ import javax.persistence.Table;
 @NamedNativeQueries({ @NamedNativeQuery(name = "findOneCart", 
 query = "SELECT c.cart_id as cart_key, "
 		+ "c.amount as linesAmount, " 
+		+"u.username as userId, "
 		+ "c.create_date as createdate, " 
 		+ "c.update_date as updatedate "
 		+ " FROM cart c " 
+		+ "JOIN user u ON u.username = c.user_id "
 		+ "WHERE c.cart_id = :cartId ", resultSetMapping = "CartsMapping") })
 @SqlResultSetMappings({ @SqlResultSetMapping(name = "CartsMapping", classes = {
 		@ConstructorResult(targetClass = Cart.class, columns = {
 				@ColumnResult(name = "cart_key", type = Long.class),
+				@ColumnResult(name = "userId", type = String.class),
 				@ColumnResult(name = "linesAmount", type = Double.class),
 				@ColumnResult(name = "createdate", type = Date.class),
 				@ColumnResult(name = "updatedate", type = Date.class) }) }) })
@@ -55,7 +58,7 @@ public class Cart implements Serializable {
 		super();
 	}
 
-	public Cart(final Long cart_key, final Double linesAmount, final Date date,
+	public Cart(final Long cart_key,final String username, final Double linesAmount, final Date date,
 			final Date update) {
 		super();
 		this.id = cart_key;
